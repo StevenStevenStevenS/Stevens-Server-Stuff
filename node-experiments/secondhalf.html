@@ -1,0 +1,19 @@
+
+    <script>
+      console.log(highscores);
+
+      // The high scores are as follows:
+      // Highscore 1 is by "so and so" with a score of "so many points"
+      // Highscore 2 is by "etc etc"
+
+      // for loop
+      //   string = `Highscore 1 is by ${ highscores[i][0] } with a score of ${ highscores[i][1] }`
+      //   document.body.insertAdjacentHTML('beforeend', string);
+
+      for(let i = 0; i < highscores.length; i++){
+        let string = `Highscore ${i+1} is by ${ highscores[i][0] } with a score of ${ highscores[i][1]} <br>`;
+        document.body.insertAdjacentHTML('beforeend', string);
+      }
+    </script>
+  </body>
+</html>

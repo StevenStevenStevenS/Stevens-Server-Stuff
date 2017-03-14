@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Image Edit</title>
+  <style>
+    body {
+      text-align: center;
+    }
+    .label {
+      width: 3em;
+      display: inline-block;
+    }
+    .frame {
+      width: 800px;
+      height: 600px;
+      margin: auto;
+      overflow: hidden;
+      border: solid 10px black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #animg {
+      
+    }
+  </style>
+</head>
+<body>
+  <input type="file" id="loadimage"><br>
+  <br>
+  <div class="label">Rotate: </div><input type="text" id="rotate"><br>
+  <div class="label">Width: </div><input type="text" id="width"><br>
+  <div class="label">Height: </div><input type="text" id="height"><br>
+  <br>
+  <div class="frame">
+    <img id="animg" style="width: 100%;">
+  </div>
+  
+  
+  <script>
+    var rotate = document.getElementById('rotate');
+    var img = document.getElementById('animg');
+    var width = document.getElementById('width');
+    var height = document.getElementById('height');
+    
+    rotate.oninput = function() {
+      var deg = "0";
+      if (rotate.value) deg = rotate.value;
+      
+      img.style.transform = "rotate(" + deg + "deg)";
+    }
+    
+    width.oninput = function() {
+      var theWidth = "auto";
+      if(width.value) theWidth = width.value + "px";
+      
+      img.style.width = theWidth;
+    }
+    
+    height.oninput = function() {
+      var theHeight = "auto";
+      if(height.value) theHeight = height.value + "px";
+      
+      img.style.height = theHeight;
+    }
+    
+  </script>
+  <script src='js/loadimage.js'></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+<!-- 	input element -->
+<!-- 	accept user text -->
+<!-- 	update url with what they type -->
+	<input type="text" id="yourmom">
+	<p id = "changeme">
+		https://www.facebook.com/
+	</p>
+<!-- 	https://www.facebook.com/ -->
+  <script>
+    (function() {
+
+      var yourmom  = document.getElementById('yourmom');
+      var changeme = document.getElementById('changeme');
+      var facebook = 'https://www.facebook.com/';
+
+      yourmom.oninput = function(event) {
+       changeme.innerHTML = facebook + this.value;
+      }
+
+    })(); 
+  </script>
+</body>
+</html>

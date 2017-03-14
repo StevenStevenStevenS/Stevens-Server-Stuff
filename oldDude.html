@@ -1,0 +1,151 @@
+
+<!--Steven's 2d game practice-->
+<!-- <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset= "UTF-8">
+		<title>Test</title>
+		
+		<style>
+			
+			#canvas {
+				height: 400px;
+				width: 600px;
+				border: 2px solid black;
+				margin: auto;
+				position: relative;
+			}
+			
+			#dude {
+				height: 20px;
+				width: 20px;
+				position: absolute;
+				margin: auto;
+				border: 3px solid #0066ff;
+				background-color: #3399ff;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="canvas">
+			<div id="dude">
+				
+			</div>
+		</div>
+		<script>
+			
+			var dude = document.getElementById('dude');
+			var canvas = document.getElementById('canvas');
+			
+			var dudeLeftRight = 0;
+			var dudeUpDown = 0;
+			
+			var speed = 5
+			var keyMap = {
+				up: {
+					KeyID: 40,
+					KeyDown: false,
+				},
+				down: {
+					KeyID: 38,
+					KeyDown: false,
+				},
+				left: {
+					KeyID: 37,
+					KeyDown: false,
+				},
+				right: {
+					KeyID: 39,
+					KeyDown: false,
+				}
+			}
+			
+			function dudeMove(input) {
+// 				if(input.keyCode === 39 && dudeLeftRight < 573 && input.keyCode === 38 && dudeUpDown > 0) {
+// 					dudeLeftRight += 1;
+// 					dude.style.left = dudeLeftRight + 'px';
+// 					dudeUpDown -= 1;
+// 					dude.style.top = dudeUpDown + 'px';
+// 				} else if(input.keyCode === 39 && dudeLeftRight < 573) {
+// 					dudeLeftRight += 1;
+// 					dude.style.left = dudeLeftRight + 'px';
+// 				} else if(input.keyCode === 37 && dudeLeftRight > 0) {
+// 					dudeLeftRight -= 1;
+// 					dude.style.left = dudeLeftRight + 'px';
+// 				} else if(input.keyCode === 38 && dudeUpDown > 0) {
+// 					dudeUpDown -= 1;
+// 					dude.style.top = dudeUpDown + 'px';
+// 				} else if(input.keyCode === 40 && dudeUpDown < 380) {
+// 					dudeUpDown += 1;
+// 					dude.style.top = dudeUpDown + 'px';
+// 				}
+				
+
+				
+// 				switch(input.keyCode) {
+// 					case '39':
+// 						if (dudeLeftRight < 573) {
+// 							dudeLeftRight += 1;
+// 						};
+// 						dude.style.left = dudeLeftRight + 'px';
+// 						break;
+					
+// 				}
+				
+				
+				if(input.keyCode === keyMap.up.KeyID){
+					keyMap.up.KeyDown = true;
+				}
+				if(input.keyCode === keyMap.down.KeyID){
+					keyMap.down.KeyDown = true;
+				}
+				if(input.keyCode === keyMap.left.KeyID){
+					keyMap.left.KeyDown = true;
+				}
+				if(input.keyCode === keyMap.right.KeyID){
+					keyMap.right.KeyDown = true;
+				}
+				
+				if(keyMap.up.KeyDown === true) {
+					dudeUpDown += speed;
+					dude.style.top = dudeUpDown + 'px';
+				} 
+				if(keyMap.down.KeyDown === true) {
+					dudeUpDown -= speed;
+					dude.style.top = dudeUpDown + 'px';
+				} 
+				if(keyMap.right.KeyDown === true) {
+					dudeLeftRight += speed;
+					dude.style.left = dudeLeftRight + 'px';
+				} 
+				if(keyMap.left.KeyDown === true) {
+					dudeLeftRight -= speed;
+					dude.style.left = dudeLeftRight + 'px';
+				} 
+			}
+			
+			document.onkeydown = dudeMove;
+			document.onkeyup = dudeStop;
+			
+			function dudeStop(input) {
+				if(input.keyCode === keyMap.up.KeyID){
+					dudeUpDown += speed;
+					keyMap.up.KeyDown = false;
+				}
+				if(input.keyCode === keyMap.down.KeyID){
+					dudeUpDown -= speed;
+					keyMap.down.KeyDown = false;
+				}
+				if(input.keyCode === keyMap.left.KeyID){
+					dudeLeftRight -= speed;
+					keyMap.left.KeyDown = false;
+				}
+				if(input.keyCode === keyMap.right.KeyID){
+					dudeLeftRight += speed;
+					keyMap.right.KeyDown = false;
+				}
+			}
+		</script>
+	</body>
+</html> -->

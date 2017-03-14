@@ -1,0 +1,84 @@
+<html>
+<head>
+<style>
+	
+	#gamePicture {
+		width: 800px;
+		height: 600px;
+		background-image: url(bridgeKeeper.png);
+		background-size: contain;
+		background-repeat: no-repeat;
+	}
+
+</style>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="trololol.js"></script>
+</head>
+<body>
+<center><div id="gamePicture"></div>	
+<div id="questions"></div>
+	<input type="text"></input>
+</center>
+
+
+	<script>
+		var name = prompt("What is your name?").toUpperCase();
+		if (name === "AIDAN") {
+			prompt("You are immediately crippled. You fall on the floor, crying, lacking the will to go on, praying that it would all end now, when suddenly a troll comes up and beats you up. you lay there clearly beaten. And the troll steals your glasses too.\n \n The End!");
+		} else if (name === "YOUR MOM") {
+			prompt("Leave now. You are not welcome here.");
+		}
+		else {
+			Start();
+		}
+	function Start() {	var Opening = prompt("You are in a high level security prision, being held for a crime you didn't commit. However, tonight you hear that one of your fellow inmates is having a birthday party and that there will be cake. You immediately want to escape.\n\n Type b to go to your bed or d to go to your door.").toUpperCase();
+	switch (Opening){
+		case "B":
+				Bed();
+				break;
+		case "D":
+				Door();
+				break;
+		default:
+				prompt("You can't do that.");
+			Start();
+		}
+	}
+	function Bed() {
+		var atBed = prompt("What a hideous looking bed.\n\n Type s to sit or b to go back.").toUpperCase();
+		switch (atBed){
+			case "S":
+				var onBed = prompt("What are you doing "+ name +"? You want to escape. There's no time to rest! Get up!\n\n Type s to sit harder or b to go back.").toUpperCase();
+					switch (onBed){
+				case "S":
+					var stillOnBed = prompt("Seriously? I give you this whole game to play and you decide to just sit here and do nothing? Fine.\n\n Type anything to die.")
+						switch (stillOnBed){
+							default:
+								prompt("Suddenly a meteor falls from the sky, crushing you instantly. " +
+			"Your cell is splattered with blood and a billion little chunks of you. " +
+				"No one loves you. No one came to your funeral either, because in the end you were just some criminal scum.\n\n" +
+				"The End.")
+					}
+					break;
+				case "B":
+					Start();
+					break;
+				default:
+					prompt("You can't do that.");
+				}
+				break;
+			case "B":
+				Start();
+				break;
+			default:
+				prompt("You can't do that.");
+		}
+	}
+	function Door() {
+		var atDoor = prompt("")
+	}
+	
+	
+	</script>
+</body>
+</html>

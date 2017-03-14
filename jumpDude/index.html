@@ -1,0 +1,524 @@
+<!--Steven's 2d game practice-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+		<meta charset= "UTF-8">
+		<title id = "datitle">Jump Dude</title>
+		
+		<style>
+			
+			#canvas {
+				height: 400px;
+				width: 600px;
+				border: 2px solid black;
+				margin: auto;
+				position: relative;
+			}
+			
+			#dude {
+				height: 20px;
+				width: 20px;
+				position: absolute;
+				margin: auto;
+				border: 3px solid #3399ff;
+				background-color: #3399ff;
+			}
+			
+			canvas {
+				border: 2px solid black;
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+			}
+			
+			#Highs {
+				height: 100%;
+				text-transform: uppercase;
+				color: white;
+				font-family: oswald;
+				top: 0;
+				left: 0;
+				width: 15em;
+				position: absolute;
+				background-color: black;
+				-webkit-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+				-moz-box-shadow:    0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+				box-shadow:         0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+			}
+			
+			#HighsTitle {
+			text-align: center;
+ 			padding: .5em; 
+    	background-color: #0022FF;
+			}
+			
+			#HighScores {
+				padding: .5em;
+			}
+			
+		</style>
+	</head>
+	<body>
+<!-- 		<canvas id="theCanvas" width="800" height="600"></canvas> -->
+		
+		
+		<div id= 'Highs'>
+			<div id= 'HighsTitle'>
+				<h1>
+					High Scores
+				</h1>
+			</div>
+			<div id='HighScores'>
+				
+			</div>
+		</div>
+		
+		
+		<script>
+			
+			// Should try bebas font
+			canvas = document.createElement("canvas");
+// 			var canvas = document.getElementByID("theCanvas");
+			var DATA;
+			var GRAVITY = 2;
+			var WIDTH = 400;
+			var HEIGHT = 600;
+			var PAUSE = false;
+			canvas.width = WIDTH;
+			canvas.height = HEIGHT;
+			
+			canvas.style.margin = "auto";
+			
+			var ctx = canvas.getContext("2d");
+			
+			document.body.appendChild(canvas);
+			
+			var checkedData = false;
+			
+			var speed = 5
+			var keyMap = {
+				up: {
+					KeyID: 38,
+					KeyDown: false,
+				},
+				down: {
+					KeyID: 40,
+					KeyDown: false,
+				},
+				left: {
+					KeyID: 37,
+					KeyDown: false,
+				},
+				right: {
+					KeyID: 39,
+					KeyDown: false,
+				}
+			}
+			
+			
+			function EraseCanvas() {
+				// THIS ERASES THE CANVAS BEFORE WE REDRAW THE DUDE
+				ctx.fillStyle = "#fff";
+				ctx.fillRect(0, 0, WIDTH, HEIGHT);
+				ctx.fillStyle = "#fff";
+			}
+			var Platforms = [];
+			Platforms[0] = new platform(540);
+ 			Platforms[1] = new platform(Platforms[0].y - 60);
+ 			Platforms[2] = new platform(Platforms[1].y - 60);
+ 			Platforms[3] = new platform(Platforms[2].y - 60);
+			Platforms[4] = new platform(Platforms[3].y - 60);
+			Platforms[5] = new platform(Platforms[4].y - 60);
+			Platforms[6] = new platform(Platforms[5].y - 60);
+			Platforms[7] = new platform(Platforms[6].y - 60);
+			Platforms[8] = new platform(Platforms[7].y - 60);
+			Platforms[9] = new platform(Platforms[8].y - 60);
+			Platforms[10] = new platform(Platforms[9].y - 60);
+			//PLATFORM
+			function platform (y) {
+				this.width = 100;
+				this.height = 5;
+				this.x = Math.random() * (WIDTH-100);
+				this.y = y;
+				this.speed = Math.random() * 4 + 1;
+				this.downspeed = 0;
+				this.hasdude = false;
+				this.anotherone = false;
+				this.nomoreones = false;
+				this.move = function() {
+					//TO MAKE THE PLATFORM MOVE
+					this.x += this.speed;
+					//TO KEEP THE PLATFORM IN THE CANVAS
+					if(this.x < 0) {
+						this.x = 0;
+						this.speed = this.speed * -1
+					}
+					if (this.x >= WIDTH - this.width) {
+						this.x = WIDTH - this.width;
+						this.speed = this.speed * -1
+					}
+					//THIS MAKES THE DUDE STAND ON THE PLATFORM. IT IS MESSED UP
+					if (this.x < dude.x + dude.width && // platform left side is less than dude's right side 
+						dude.x < this.x + this.width && // dude's left side is less than platform's right side
+						this.y <= dude.y + dude.height && this.y + this.height >= dude.y + dude.height &&
+						dude.fall === true) { // dude is falling
+						this.hasdude = true;
+					} 
+ 					else if(!(this.x < dude.x + dude.width && //NOT platform left side is less than dude's right side 
+ 						dude.x < this.x + this.width && this.y <= dude.y + dude.height && this.y + this.height >= dude.y + dude.height)) {
+						this.hasdude = false;
+ 					}
+					var platformsHaveDude = false;
+				for (var i = 0; i < Platforms.length; i++) {
+					if (Platforms[i].hasdude === true) {
+						platformsHaveDude = true;
+					}
+				}
+				if (platformsHaveDude) {
+						dude.onplatform = true;
+ 						dude.fall = false;
+						dude.jump = false;
+						dude.howhigh = 0;
+						dude.jumpmax = dude.y - 100;
+				} else if (platformsHaveDude === false) {
+					dude.onplatform = false;
+				}
+					
+					//THIS MAKES THE DUDE MOVE WHILE ON THE PLATFORM
+					if (this.hasdude) {
+						dude.x += this.speed;
+						dude.lastY = dude.y;
+						this.anotherone = true;
+					}
+					//THIS MAKES THE PLATFORMS MOVE DOWN AFTER DUDE IS HIGH
+					if (dude.y <= 200) {
+						dude.y = 200;
+						this.downspeed = 3;
+						this.y += this.downspeed;
+					} else if (dude.y > 200) {
+						this.downspeed = 0;
+					}
+					//MORE SCORES
+					if(this.anotherone && this.nomoreones === false) {
+						dude.score = dude.score + 1;
+						this.nomoreones = true;
+					}
+					// THIS REDRAWS THE PLATFORM AFTER IT MOVED
+					ctx.fillStyle = "#000000";
+					ctx.fillRect(this.x, this.y, this.width, this.height);
+				}
+			}
+			
+			
+			
+			//THE DUDE
+			var dude = {
+				width: 20,
+				height: 20,
+				x: (WIDTH-20)/2,
+				y: 580,
+				speed: 5,
+				fall: false,
+				jump: false,
+ 				jumpmax: 500,
+				onplatform: false,
+				lastY: 0,
+				itsallgood: true,
+				lose: false,
+ 				howhigh: 0,
+				score: 0,
+				best: 0,
+				hitext: true,
+				onelose: true,
+				move: function() {
+					// trying to impplement gravity
+					if(dude.onplatform === false){
+						this.y = this.y + GRAVITY;
+					}
+					//STARTING TEXT
+					if(dude.hitext === true && lava.y >= HEIGHT) {
+						ctx.fillStyle = "#000000";
+						ctx.font = "50px VT323";
+						ctx.fillText ("PRESS UP TO START", WIDTH/2 - 180, HEIGHT/2);
+					}
+					// THESE CHECKS ARE FOR ACTUALLY MOVING THE DUDE IF AN ARROW KEY IS PRESSED
+					if(keyMap.up.KeyDown && this.fall === false){
+						this.jump = true;
+						this.y -= this.speed;
+					}
+					if(keyMap.down.KeyDown) {
+						this.y += this.speed;
+					}
+					if(keyMap.left.KeyDown) {
+						this.x -= this.speed;
+					}
+					if(keyMap.right.KeyDown) {
+						this.x += this.speed;
+					}
+					
+					// THESE CHECKS KEEP THE DUDE INSIDE THE CANVAS
+					if (this.x < -19) {
+						this.x = WIDTH - this.width + 19;
+					}
+					if (this.x > WIDTH -this.width + 19) {
+						this.x = - 19;
+					}
+					if (this.y < 0) {
+						this.y = 0;
+					}
+					if (this.y >= HEIGHT - this.height && this.itsallgood === true) {
+						this.y = HEIGHT - this.height;
+						this.lastY = this.y;
+						if(this.fall === true) {
+							this.fall = false;
+							this.jump = false;
+						}
+					} else if (this.y >= HEIGHT - this.height && this.itsallgood === false) {
+							this.lose = true;
+					}
+					if (this.y <= this.jumpmax) {
+						this.fall = true;
+					}
+					//THIS ALLOWS THE DUDE TO JUMP HIGHER ON THE CANVAS WHEN ON PLATFORMS
+ 					if (this.jump === false && this.fall === false) {
+ 						this.jumpmax = this.y - 100;
+ 					}
+ 					if (this.y < this.lastY) {
+ 						this.howhigh += 3;
+ 					}
+ 					if (this.howhigh >= 100) {
+						this.fall = true;
+					}
+					// THIS REDRAWS THE DUDE AFTER HE MOVED (OR DIDN'T MOVE)
+					ctx.fillStyle = "#3399ff";
+					ctx.fillRect(this.x, this.y, this.width, this.height);
+				}
+			}
+			
+			var lava = {
+				width: WIDTH + 3,
+				height: 1000,
+				x: 0,
+				y: HEIGHT,
+				move: function() {
+					lava.y += Platforms[0].downspeed;
+						
+					if (dude.itsallgood === false && this.y >= 0) {
+						if(dude.lose === false) {
+							this.y -= .95;
+							if (dude.y > dude.lastY && this.y > HEIGHT) {
+								this.y = HEIGHT
+							}
+						} else if(dude.lose === true) {
+							// THIS MAKES THE LAVA ON SCREEN BY DEATH IF IT ISN'T ALREADY
+							if(this.y >= HEIGHT) {
+								this.y = HEIGHT - 1;
+							}
+							this.y -= .15 * (HEIGHT - this.y);
+						}
+					}
+					//THIS MAKES THE DUDE DIE BY FIRE
+					if(dude.y > this.y) {
+						dude.lose = true;
+					}
+					// THIS REDRAWS THE LAVA AFTER IT MOVED
+					ctx.fillStyle = "#ff3300";
+					ctx.fillRect(this.x, this.y, this.width, this.height);
+				}
+			}
+			
+			function score() {
+				ctx.fillStyle = "#000000";
+				ctx.font = "30px VT323";
+				ctx.fillText (dude.score, 350, 20);
+				document.getElementById('datitle').innerHTML = "Jump Dude | Score: " + dude.score;
+			}
+			
+			function GameOver() {
+				if (checkedData === false) {
+					for (var i=0; i<DATA.length; i++){
+						if(dude.score > Number(DATA[i][1])) {
+							var winna = prompt("Rad dude!\nYou are currently on the leader board.\nWhat is your name?","Your name here, dude.");
+							winna = winna.slice(0, 25);
+							if(winna.toUpperCase() === "JAKE" || winna.toUpperCase() === "JACOB") {
+								winna = "Not as good as steve";
+							}
+							var winnaScore = dude.score;
+							DATA.splice(i,0,[winna, winnaScore]);
+							DATA.pop();
+							console.log(DATA);
+							sendData(RANGE,DATA);
+							doStuffWithData(DATA);
+							break;
+						}
+					}
+				}
+				checkedData = true;
+				if (dude.score > 0) {
+					ctx.fillStyle = "#000000";
+					ctx.font = "50px VT323";
+					ctx.fillText ("Your Score: " + dude.score, WIDTH/2 - 135, HEIGHT/2-25);
+					ctx.font = "45px VT323";
+					ctx.fillText ("Your Best: " + dude.best, WIDTH/2 - 115, HEIGHT/2 + 23);
+					ctx.font = "90px VT323";
+					ctx.fillText ("GAME OVER", WIDTH/2-165, 170);
+				} else if (dude.score === 0) {
+					ctx.fillStyle = "#000000";
+					ctx.font = "50px VT323";
+					ctx.fillText ( "Really dude?", WIDTH/2 - 120, HEIGHT/2);
+				}
+				canvas.onclick = restart;
+			}
+			function restart() {
+				checkedData = false;
+				Platforms.shift();
+				Platforms.push(new platform());
+				Platforms.shift();
+				Platforms.push(new platform());
+				Platforms.shift();
+				Platforms.push(new platform());
+				Platforms.shift();
+				Platforms.push(new platform());
+				Platforms.shift();
+				Platforms.push(new platform());
+				Platforms.shift();
+				Platforms.push(new platform());
+				Platforms.shift();
+				Platforms.push(new platform());
+				Platforms.shift();
+				Platforms.push(new platform());
+				Platforms.shift();
+				Platforms.push(new platform());
+				Platforms.shift();
+				Platforms.push(new platform());
+				Platforms[0].y = 540;
+				Platforms[1].y = Platforms[0].y - 60;
+ 				Platforms[2].y = Platforms[1].y - 60;
+ 				Platforms[3].y = Platforms[2].y - 60;
+				Platforms[4].y = Platforms[3].y - 60;
+				Platforms[5].y = Platforms[4].y - 60;
+				Platforms[6].y = Platforms[5].y - 60;
+				Platforms[7].y = Platforms[6].y - 60;
+				Platforms[8].y = Platforms[7].y - 60;
+				Platforms[9].y = Platforms[8].y - 60;
+				Platforms[10].y = Platforms[9].y - 60;
+				lava.y = HEIGHT;
+				dude.width = 20;
+				dude.height = 20;
+				dude.x = (WIDTH-20)/2;
+				dude.y = 580;
+				dude.speed = 5;
+				dude.fall = false;
+				dude.jump = false;
+ 				dude.jumpmax = 500;
+				dude.onplatform = false;
+				dude.lastY = 0;
+				dude.itsallgood = true;
+				dude.lose = false;
+ 				dude.howhigh = 0;
+				dude.score = 0;
+				dude.hitext = true;
+				dude.onelose = true;
+				canvas.onclick = null;
+
+// 				if(lava.y < HEIGHT) {
+// 					this.y += .15 * (HEIGHT + this.y);
+// 				}
+			}
+			
+			function checkPause(input) {
+				if(PAUSE === false && input.keyCode === 27) {
+					PAUSE = true;
+				}else if(PAUSE === true && input.keyCode === 27) {
+					PAUSE = false;
+				}
+			}
+			
+			function dudeNotGood() {
+				dude.itsallgood = false;
+			}
+			
+			function dudeMove(input) {
+				checkPause(input);
+				if(input.keyCode === keyMap.up.KeyID && dude.lose === false){
+					dude.hitext = false;
+					keyMap.up.KeyDown = true;
+					setTimeout("dudeNotGood()", 1000);
+				}
+				if(input.keyCode === keyMap.down.KeyID && dude.lose === false){
+					keyMap.down.KeyDown = true;
+				}
+				if(input.keyCode === keyMap.left.KeyID && dude.lose === false){
+					keyMap.left.KeyDown = true;
+				}
+				if(input.keyCode === keyMap.right.KeyID && dude.lose === false){
+					keyMap.right.KeyDown = true;
+				}
+				if (dude.lose && keyMap.up.KeyDown === false) {
+					setTimeout("pressit()", 1500);
+				}
+			}
+			function pressit() {
+				if (dude.lose && keyMap.up.KeyDown === false) {
+					restart();
+				}
+			}
+			
+			function dudeStop(input) {
+				if(input.keyCode === keyMap.up.KeyID){
+					keyMap.up.KeyDown = false;
+					dude.fall = true;
+					dude.jump = false;
+				}
+				if(input.keyCode === keyMap.down.KeyID){
+					keyMap.down.KeyDown = false;
+				}
+				if(input.keyCode === keyMap.left.KeyID){
+					keyMap.left.KeyDown = false;
+				}
+				if(input.keyCode === keyMap.right.KeyID){
+					keyMap.right.KeyDown = false;
+				}
+			}
+			
+			document.onkeydown = dudeMove;
+			document.onkeyup = dudeStop;
+			
+			
+			// game loop function
+			var loop = function() {
+				if(PAUSE === false) {
+				EraseCanvas();
+				for(var i = 0; i < Platforms.length; i++) {
+					Platforms[i].move();
+ 					if(Platforms[i].y > HEIGHT) {
+ 						Platforms.shift();
+						Platforms.push(new platform());
+						Platforms[Platforms.length - 1].y = Platforms[Platforms.length - 2].y - 60
+  					}
+				}
+				dude.move();
+				lava.move();
+				score();
+				if (dude.lose && lava.y <= 0) {
+					if(dude.score > dude.best) {
+						dude.best = dude.score;
+					}
+					GameOver();
+				}
+				}
+				window.requestAnimationFrame(loop, canvas);
+			};
+			window.requestAnimationFrame(loop, canvas);
+			
+			
+		</script>
+	<script src='gapi.js'></script>
+  <script src="https://apis.google.com/js/client.js?onload=checkAuth"></script>
+
+	</body>
+</html>

@@ -1,0 +1,574 @@
+<html>
+	<head>
+		
+		
+		<style>
+			body {
+				margin: 0;
+			}
+			.consoleContainer {
+				width: 100%;
+				height: 100%;
+				margin: auto;
+				background-color: black;
+				color: lime;
+				overflow-y: scroll;
+				overflow-x: none;
+				word-wrap: break-word;
+				box-sizing: border-box;
+				padding: 10px;
+				font-family: 'VT323';
+				font-size: 1.5em;
+			}
+			#caret {
+				color: lime;
+				display: inline-block;
+			}
+			#dolla {
+				display: inline;
+				font-size: 1.3em;
+			}
+			#userInput {
+				display: inline;
+				max-width: 95%;
+			}
+			#gameTitle {
+				font-size: .75em;
+				font-family: monospace;
+				text-align: center;
+			}
+			@media screen and (max-width: 1100px) {
+				#gameTitle {
+					font-size: .5em;
+				}	
+			}
+			@media screen and (max-width: 800px) {
+				#gameTitle {
+					font-size: .3em;
+				}	
+			}
+			@media screen and (max-width: 500px) {
+				#gameTitle {
+					display: none;
+				}	
+			}
+		</style>
+		
+		
+		<link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+			
+		
+	</head>
+	
+	
+	<body>
+		
+		<div class="consoleContainer">
+			<div id="historyContainer">
+				<div id="gameTitle">
+					
+&nbsp;&nbsp;___________________________________&nbsp;&nbsp;&nbsp;_______________&nbsp;_______/\&nbsp;&nbsp;_________&nbsp;&nbsp;&nbsp;________&nbsp;&nbsp;&nbsp;&nbsp;_____&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_____&nbsp;&nbsp;___________<br>
+&nbsp;/&nbsp;&nbsp;&nbsp;_____/\__&nbsp;&nbsp;&nbsp;&nbsp;___/\_&nbsp;&nbsp;&nbsp;_____/\&nbsp;&nbsp;&nbsp;\&nbsp;/&nbsp;&nbsp;&nbsp;/\_&nbsp;&nbsp;&nbsp;_____/&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)/&nbsp;/&nbsp;&nbsp;&nbsp;_____/&nbsp;&nbsp;/&nbsp;&nbsp;_____/&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;_&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\&nbsp;\_&nbsp;&nbsp;&nbsp;_____/<br>
+&nbsp;\_____&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;__)_&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;Y&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;__)_&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;\&nbsp;\_____&nbsp;&nbsp;\&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;\&nbsp;&nbsp;___&nbsp;&nbsp;/&nbsp;&nbsp;/_\&nbsp;&nbsp;\&nbsp;&nbsp;/&nbsp;&nbsp;\&nbsp;/&nbsp;&nbsp;\&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;__)_&nbsp;<br>
+&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\/&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;\/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;\_\&nbsp;&nbsp;\/&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;\/&nbsp;&nbsp;&nbsp;&nbsp;Y&nbsp;&nbsp;&nbsp;&nbsp;\|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\<br>
+/_______&nbsp;&nbsp;/&nbsp;&nbsp;|____|&nbsp;&nbsp;&nbsp;/_______&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;\___/&nbsp;&nbsp;&nbsp;/_______&nbsp;&nbsp;/\____|__&nbsp;&nbsp;/_______&nbsp;&nbsp;/&nbsp;&nbsp;\______&nbsp;&nbsp;/\____|__&nbsp;&nbsp;/\____|__&nbsp;&nbsp;/_______&nbsp;&nbsp;/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\/		<br>		
+				</div>
+				<br>
+				What is your name?<br><br>
+			</div>
+			<div id="dolla">$</div><div id="userInput"></div><div id="caret">_</div>
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<script>
+			// PROBABLY NEED TO MAP ALL OF THE NONCHARACTER KEYS IN ORDER TO DEAL WITH BUGS
+			// FROM CONVERTING KEYCODE TO CHARACTERS ON INPUT
+			// SHOULD PREVENT NONCHARACTER KEYS FROM CONVERTING EVENTUALLY
+			var keyMap = {
+				backspace: 8,
+				enter: 13,
+				backslash: 191 // this is for the question mark
+			};
+			
+			var userInput = "";
+			
+			// THIS IS THE DOLLAR SIGN PROMPT
+			var dolla = document.getElementById('dolla');
+						
+			// THE FIRST LEVEL IS RETRIEVING THE USER'S NAME
+			var level = "name";
+			
+			// HAVEN'T FIGURED OUT A WAY TO USE THIS VARIABLE INSIDE THE GAME LOGIC YET
+			var playerName = "test";
+			
+			
+			
+			// THIS IS THE PART THAT WAITS FOR KEYPRESSES
+			$('body').on('keydown', function(x) {
+				x.preventDefault();
+				// IF THEY HIT THE BACKSPACE WE NEED TO DELETE THE PREVIOUS CHARACTER
+				if (x.keyCode === keyMap.backspace) {
+					userInput = userInput.slice(0, userInput.length - 1);
+				}
+				// IF THEY HIT ENTER THEN WE NEED TO TAKE THE INPUT AND SEND IT TO THE GAME
+				else if (x.keyCode === keyMap.enter) {
+					$('#historyContainer').append(userInput + "<br>");
+					game();
+					userInput = "";
+				}
+				// IF THEY'RE HITTING NORMAL CHARACTERS THEN WE NEED TO ADD IT TO THE STRING
+				else {
+					// THIS IS TO HANDLE ?'s BECAUSE CURRENTLY CERTAIN KEYS GIVE WEIRD CHARACTERS
+					// THIS IS A BUG THAT WE SHOULD DEAL WITH EVENTUALLY BUT IS FINE FOR NOW
+					if (x.keyCode === keyMap.backslash) {
+						inputChar = "?";
+					}
+					// THIS IS NORMAL KEYBOARD INPUT
+					else {
+						var inputChar = String.fromCharCode(x.keyCode);
+						if (x.shiftKey === false) {
+							inputChar = inputChar.toLowerCase();
+						}
+					}
+					userInput = userInput.concat(inputChar);
+				}
+				$('#userInput').text(userInput);
+				// THIS IS NO LONGER NECECESSARY FOR STEVEN'S GAME BUT I MIGHT USE LATER
+				// IF YOU DIDN'T AUTOMATICALLY CLEAR THE SCREEN AND THE WINDOW FILLED UP
+				// WE'D WANT IT TO AUTOMATICALLY SCROLL WITH THE PROMPT
+				dolla.scrollIntoView({behavior: 'smooth'});
+			});
+			//SHOULD ALWAYS KEEP FALSE
+			var UDead = false;
+			
+			
+			
+			
+			
+			
+			// THIS IS WHERE EACH SECTION OF THE GAME LIVES
+			// EACH SECTION IS A "level" INSIDE THE "scene" OBJECT
+			// THEY ALL HAVE A NAME "GameOver", "name", "Bed", etc
+			// THEN THEY ALL HAVE SOME KIND OF LOGIC TO HANDLE THAT SITUATION
+			// MOST WILL HAVE A "question" and "action"
+			scene = {
+				GameOver: {
+					question: "YOU LOSE!",
+					action: "Type \"try again\" to start over",
+					logic: function() {
+						switch(userInput.toUpperCase()) {
+							case "TRY AGAIN":
+								level = "name";
+								
+								nextQuestion();
+								break
+							default:
+								nextQuestion();
+						}
+					}
+				},
+				
+				
+				name: {
+					question: "What is your name?",
+					action: "",
+					logic: function() {
+						if (userInput.toUpperCase() === "AIDAN") {
+							respond("You are immediately crippled. You fall on the floor, crying, lacking the will to go on, praying that it would all end now, when suddenly a troll comes and beats you up. you lay there clearly beaten. And the troll steals your glasses too.<br><br> The End!<br><br>");
+							level = "GameOver";
+						}
+						if (userInput.toUpperCase() === "YOUR MOM") {
+							respond("Get Out. You are not welcome here.<br><br>");
+							
+							level = "GameOver";
+						}
+						if(userInput.toUpperCase() !== "AIDAN" && userInput.toUpperCase() !== "YOUR MOM"){
+							level = "Start";
+							playerName = userInput;
+// 							scene.onBed.question = "What are you doing " + playerName + "? You want to escape. There's no time to rest! Get up!";
+// 							scene.DoorLock.question = "Well, it shouldn't be too hard to breakout now. All you have to do is punch in the combination that the guard just punched in. Simple!\n\n Wait. . . what's that " + playerName + "? You didn't look to see the combination? Why, that's basic prison breakout 101! I mean, you can't just expect them to let you out! Hmm. Well maybe if you just type in your favorite 6-digit number it will work."
+							nextQuestion();
+						}
+					}
+				},
+				
+				
+				Start: {
+					question: "You are in a high level security prison, being held for a crime you didn't commit. However, tonight you hear that one of your fellow inmates is having a birthday party and that there will be cake. You immediately want to escape.",
+					action: "Type b to go to your bed or d to go to your door.",
+					logic: function() {
+						switch (userInput.toUpperCase()) {
+							case "B":
+								level = "Bed";
+								nextQuestion();
+								break;
+							case "D":
+								level = "Door";
+								nextQuestion();
+								break;
+							default:
+								defaultResponse();
+						}
+					}
+				},
+				
+				
+				Bed: {
+					question: "What a hideous looking bed.",
+					action: "Type s to sit or b to go back.",
+					logic: function() {
+						switch (userInput.toUpperCase()) {
+							case "S":
+								level = "onBed";
+								nextQuestion();
+								break;
+							case "B":
+								level = "Start";
+								nextQuestion();
+								break;
+							default:
+								defaultResponse();
+						}
+					}
+				},
+				
+				
+				onBed: {
+					question: "What are you doing playerName? You want to escape. There's no time to rest! Get up!",
+					action: "Type s to sit harder or b to go back.",
+					logic: function() {
+						switch (userInput.toUpperCase()) {
+							case "S":
+								level = "stillOnBed";
+								nextQuestion();
+								break;
+							case "B":
+								level = "Start";
+								nextQuestion();
+								break;
+							default:
+								defaultResponse();
+						}
+					}
+				},
+				
+				
+				stillOnBed: {
+					question: "Seriously? I give you this whole game to play and you decide to just sit here and do nothing? Fine.",
+					action: "Type anything to die.",
+					logic: function() {
+						switch (userInput.toUpperCase()) {
+							default:
+								respond("Suddenly a meteor falls from the sky, crushing you instantly. " +
+								"Your cell is splattered with blood and a billion little chunks of you. " +
+								"No one loves you. No one came to your funeral either, because in the end you were just some criminal scum.<br><br>" +
+								"The End.<br><br>");
+								level = "GameOver";
+						}
+					}
+				},
+				
+				
+				Door: {
+					question: "Hmm. It looks like it's locked. Maybe if you slid your hand through the bars you could try to reach the keypad on the outside.",
+					action: "Type r to reach for the lock or b to go back.",
+					logic: function() {
+						switch (userInput.toUpperCase()) {
+							case "R":
+								level = "DoorLock";
+								nextQuestion();
+								break;
+							case "B":
+								level = "Start";
+								nextQuestion();
+								break;
+							default:
+								defaultResponse();
+						}
+					}
+				},
+				
+				
+				DoorLock: {
+					question: "Luckily, due to your long arms and your cell's poor design you were able to reach. Well, it shouldn't be too hard to breakout now. All you have to do is punch in the combination that the guard just punched in. Simple!<br><br>Wait. . . what's that playerName? You didn't look to see the combination? Why, that's basic prison breakout 101! I mean, you can't just expect them to let you out! Hmm. Well maybe if you just type in your favorite 6-digit number it will work.",
+					action: "Go ahead. Try it.",
+					logic: function() {
+						switch (userInput.toUpperCase()) {
+							default:
+								if (userInput.length != 6 && isNaN(userInput) === false ) {
+									level = "DoorOpen2";
+									nextQuestion();
+								} else if (isNaN(userInput) && userInput.length === 6) {
+									level = "DoorOpen3";
+									nextQuestion();
+								} else if(userInput.length != 6 && isNaN(userInput)) {
+									respond("What was THAT? You didn't put in 6 digits OR use a number! I mean, some KINDERGARTENERS may make one mistake or the other, yet you made BOTH. I'm sorry I can't. I just can't. Please come back when you learn how to type basic numbers.")
+									level = "GameOver";
+								} else {
+								level = "DoorOpen";
+								nextQuestion();
+								}
+						}
+					}
+				},
+				DoorOpen: {
+					question: "Not even close. Alarms start going off everywhere. Guards are bound to arrive soon. Smooth.<br><br>Luckily the door was standing right open the whole time. You really should pay more attention to this stuff. Maybe if you go now you can find a place to hide.",
+					action: "Type h to hide or s to stupidly decide to stay here.",
+					logic: function() {
+						switch (userInput.toUpperCase()) {
+							case "H":
+								level = "HiddingSpot";
+								nextQuestion();
+								break;
+							case "S":
+								level = "Stay";
+								nextQuestion();
+								break;
+							default:
+								defaultResponse();
+						}
+					}
+				},
+				DoorOpen2: {
+					question: "What was THAT? You didn't even type in a 6-digit number! You do know HOW to count to 6, don't you? I swear, some people. . . Anyways, alarms start going off everywhere. Guards are bound to arrive soon.<br><br>Luckily the door was standing right open the whole time. You really should pay more attention to this stuff. Maybe if you go now you can find a place to hide.",
+					action: "Type h to hide or s to stupidly decide to stay here.",
+					logic: function() {
+						switch (userInput.toUpperCase()) {
+							case "H":
+								level = "HiddingSpot2";
+								nextQuestion();
+								break;
+							case "S":
+								level = "Stay";
+								nextQuestion();
+								break;
+							default:
+								defaultResponse();
+						}
+					}
+				},
+				DoorOpen3: {
+					question: "Wait a second, did you just type in some LETTERS? They don't even HAVE letters on the lock! You do know what numbers ARE, don't you? Anyways. . . alarms start going off everywhere. Guards are bound to arive soon.<br><br>Luckily the door was standing right open the whole time. You really should pay more attention to this stuff. Maybe if you go now you can find a place to hide.",
+					action: "Type h to hide or s to stupidly decide to stay here.",
+					logic: function() {
+						switch (userInput.toUpperCase()) {
+							case "H":
+								level = "HiddingSpot2";
+								nextQuestion();
+								break;
+							case "S":
+								level = "Stay";
+								nextQuestion();
+								break;
+							default:
+								defaultResponse();
+						}
+					}
+				},
+				Stay: {
+					question: "Really? Well, I don't know what to say. I only gave you this option to present you with the illusion of choice. You're just going to have to wait for another party and hope you can get out again. That's really all you can do now. And next time, try to make better choices, ok?",
+					action: "Type anything to wait for another party.",
+					logic: function() {
+						switch (userInput.toUpperCase()) {
+							default:
+								level = "Start"
+								nextQuestion();
+						}
+					}
+				},
+				HiddingSpot: {
+					question: "You are immediately faced with a decision. You see that there is a door labled 'Break Room' to your left. On your right there is another door labled 'Storage'. In the middle there is a cardboard box that looks barely big enough to fit a full sized man.",
+					action: "Type l to go left, r to go right, or s to go straight.",
+					logic: function() {
+						switch (userInput.toUpperCase()) {
+							case "L":
+								level = "Left";
+								nextQuestion();
+								break;
+							case "S":
+								level = "Straight";
+								nextQuestion();
+								break;
+							case "R":
+								level = "Right";
+								nextQuestion();
+								break;
+							default:
+								defaultResponse();
+						}
+					}
+				},
+				HiddingSpot2: {
+					question: "You are immediately faced with a decision. You see that there is a door to your left that says something on it, yet since we've already established that you aren't very bright, the sign probably looked something like 'BBra3kR000m'. On your right there is another door with a sign that says something like 'SSt00raaag3'. In the middle there is a cardboard box that looks barely big enough to fit a full sized man.",
+					action: "Type l to go left, r to go right, or s to go straight.",
+					logic: function() {
+						switch (userInput.toUpperCase()) {
+							case "L":
+								level = "Left";
+								nextQuestion();
+								break;
+							case "S":
+								level = "Straight";
+								nextQuestion();
+								break;
+							case "R":
+								level = "Right";
+								nextQuestion();
+								break;
+							default:
+								defaultResponse();
+						}
+					}
+				},
+				Left: {
+					question: "You step into the Break room and come face to face with an army of frantic looking guards. At this point you have only a slim chance of getting away.",
+					action: "Type s to stay or r to run.",
+					logic: function() {
+						switch (userInput.toUpperCase()) {
+							case "S":
+								level = "Stay";
+								nextQuestion();
+								break;
+							case "R":
+								respond("You sprint down the hallway knowing that, much like the little gingerbread man, no one will be able to catch you. Sadly, they don't need to! The guards panic and gun you down, shattering all of your hopes and the bones in your leg. You end up in the hospital after your brief moment of freedom where they tell you that, not only did you break your leg, but you also broke your cake-digesting bone. Of course they're probably just making this up to keep you from trying to escape again, but you completely belive them and never eat cake again.<br> <br> The End!");
+								level = "GameOver";
+								break;
+							default:
+								defaultResponse();
+						}
+					}
+				},
+				Right: {
+					question: "You enter just as the guards start flooding into the hallway. Before most of the guards leave, you hear one of them apoint another guard to stay behind. In the storage room there is a crowbar and a moldy piece of cake.",
+					action: "Type p to peak out, l to leave, c to use crowbar, and e to eat cake.",
+					logic: function() {
+						switch (userInput.toUpperCase()) {
+							case "P":
+								peakResponse();
+								break;
+							case "L":
+								level = "";
+								nextQuestion();
+								break;
+							case "C":
+								level = "Right";
+								nextQuestion();
+							case "E":
+								respond("You're just about to eat the cake when all of the sudden, your window crashes because of an infinite for loop that the game programer inconveniently started.<br><br>The End!")
+								level = "YouGonnaDie";
+								nextQuestion();
+								break;
+							default:
+								defaultResponse();
+						}
+					}
+				},
+				Straight: {
+					question: "Oh sure, a cardboard box. Who would decide to check the suspicious cardboard box besides EVERYONE? Wait a second no one's checking the box. Must be defective AIs. You think about that for a moment since it seems odd that a text based game would have AIs at all, yet you decide it makes sense because the game says you do.",
+					action: "Type p to peek out, l to leave, or c to crawl.",
+					logic: function() {
+						switch (userInput.toUpperCase()) {
+							case "P":
+								peakResponse();
+								break;
+							case "L":
+								level = "leaveBox";
+								nextQuestion();
+								break;
+							case "C":
+								level = "crawl";
+								nextQuestion();
+								break;
+							default:
+								defaultResponse();
+						}
+					}
+				},
+				YouGonnaDie: {
+				question: "You're just about to eat the cake when all of the sudden, your window crashes because of an infinite for loop that the game programer inconveniently started.<br><br>The End!",
+					action: "Mwahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahaha",
+					logic: function() {
+									while (true) {
+									console.log("The cake is a lie.");
+									}
+								
+						
+					}
+				},
+			};
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			function game() {
+				scene[level].logic();
+			}
+			
+			function caretBlink() {
+				var caret = $('#caret');
+				if (caret.html() === "_") {
+					caret.html("");
+				}
+				else {
+					caret.html("_");
+				}
+				
+				setTimeout("caretBlink()", 500);
+			}
+			
+			caretBlink();
+			
+			function respond(response) {
+				$('#historyContainer').html(response);
+			}
+			
+			function nextQuestion() {
+				var question = "", action = "";
+
+				if (scene[level].question) {
+					question = scene[level].question;
+					if (question.indexOf("playerName") !== -1) {
+						question = question.replace("playerName", playerName);
+					}
+					question = question + "<br><br>";
+				}
+				if (scene[level].action) {
+					action = scene[level].action;
+					
+					if (action.indexOf("playerName") !== -1) {
+						action = action.replace("playerName", playerName);
+					}
+					action = action + "<br><br>";
+				}
+				
+				respond(question + action);
+			}
+			
+			function defaultResponse() {
+				respond("You can't do that.<br><br>" + scene[level].action + "<br><br>");
+			}
+			
+			function peakResponse() {
+				respond("You see a single guard facing the other way. If you were to sneak up behind him he may be vunerable to an attack.<br><br>"+ scene[level].action + "<br><br>")
+			}
+			
+			
+		</script>
+	</body>
+</html>

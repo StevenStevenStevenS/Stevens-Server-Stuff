@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Steven Clicker</title>
+  <script src="db.js"></script>
+</head>
+<body>
+  <style>
+    div {
+      font-size: 40px;
+    }
+		.no {
+			display: none;
+		}
+  </style>
+  
+  <button id= "HappySteve">Happy Steven</button>
+  <button id= "SadSteve">Sad Steven</button>
+  <button id= "TrumpSteve">Trump Steven</button>
+  <button id= "ObamaSteve">Obama Steven</button>
+  <button id= "BeardedSteve">Bearded Steven</button>
+	
+  <div id="Container">
+    STEVEN CLICKER ~ click Steven's face to your heart's content
+		<img src="hapSte.jpg" class="no"/>
+		<image src="sadSte.jpg" class="no"/>
+		<image src="stevenTrump.jpg" class="no"/>
+		<image src="beardedSteve.jpg" class="no"/>
+		<img id="obamaPic" src="1 Obama Lama Steve.jpg" class="no"/>
+	</div>
+	
+	<div id="obamaTimer">
+		
+	</div>
+<script>
+  var HappyNumber = 0;
+  var SadNumber = 0;
+  var TrumpNumber = 0;
+  var BeardNumber = 0;
+  var ObamaNumber = 0;
+	var TimerBase = 6;
+	var obamaCount = 0
+	var obamaVisibility = true;
+  
+  HappySteve.onclick = function () {
+    document.getElementById('Container').innerHTML =  '<input type="image" id="faceButton" src="hapSte.jpg"  /><div id = "# o Steves">Happy Stevens Clicked: ' + HappyNumber + '</div>'
+    faceButton.onclick = function() {
+      HappyNumber ++;
+      document.getElementById('# o Steves').innerHTML = "Happy Stevens Clicked: " + HappyNumber;
+    }
+  }
+  SadSteve.onclick = function () {
+    document.getElementById('Container').innerHTML =  '<input type="image" id="sadFaceButton" src="sadSte.jpg" />' +
+													  '<div id="# o sadSteves">Sad Stevens Clicked: ' + SadNumber + '</div>';
+     sadFaceButton.onclick = function() {
+      SadNumber ++;
+      document.getElementById('# o sadSteves').innerHTML = "Sad Stevens Clicked: " + SadNumber;
+    }
+  }
+    TrumpSteve.onclick = function () {
+    document.getElementById('Container').innerHTML =  '<input type="image" id="trumpFaceButton" src="stevenTrump.jpg" />' +
+													  '<div id="# o trumpSteves">Trump Stevens Clicked: ' + TrumpNumber + '</div>';
+     trumpFaceButton.onclick = function() {
+      TrumpNumber ++;
+      document.getElementById('# o trumpSteves').innerHTML = "Trump Stevens Clicked: " + TrumpNumber;
+    }
+  }
+    BeardedSteve.onclick = function () {
+    document.getElementById('Container').innerHTML =  '<input type="image" id="beardFaceButton" src="beardedSteve.jpg" />' +
+													  '<div id="# o beardSteves">Bearded Stevens Clicked: ' + BeardNumber + '</div>';
+     beardFaceButton.onclick = function() {
+      BeardNumber ++;
+      document.getElementById('# o beardSteves').innerHTML = "Bearded Stevens Clicked: " + BeardNumber;
+    }
+  }
+    ObamaSteve.onclick = function () {
+    document.getElementById('Container').innerHTML =  '<input type="image" id="obamaFaceButton" src="1 Obama Lama Steve.jpg" />' +
+													  '<div id="# o obamaSteves">Obama Stevens Clicked: ' + ObamaNumber + '</div>';
+     obamaFaceButton.onclick = function() {
+      ObamaNumber ++;
+      document.getElementById('# o obamaSteves').innerHTML = "Obama Stevens Clicked: " + ObamaNumber;
+			document.getElementById("obamaFaceButton").style.visibility = "hidden";
+			 obamaCount = TimerBase;
+			var obamaInterval = setInterval(function(){
+				obamaCount--;
+				document.getElementById("obamaTimer").innerHTML = obamaCount; 
+				if (obamaCount===0) {
+					document.getElementById("obamaFaceButton").style.visibility = "visible";
+					clearInterval(obamaInterval);
+					document.getElementById("obamaTimer").innerHTML = "";
+				}
+			} , 1000);
+			
+    }
+  }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+// 	var TimerBase = 6;
+  
+  
+//   for (i=0; i<db.length; i++) {
+// 		db[i].timer = 0;
+// 		var buttonId = db[i].name;
+// 		document.body.innerHTML += '<button id="' + buttonId.replace(" ","") + '">' + db[i].name + '</button>';
+    
+    
+// 		 ObamaSteve.onclick = function () {
+//     document.getElementById('Container').innerHTML =  '<input type="image" id="obamaFaceButton" src="1 Obama Lama Steve.jpg" />' +
+// 													  '<div id="# o obamaSteves">Obama Stevens Clicked: ' + ObamaNumber + '</div>';
+//      obamaFaceButton.onclick = function() {
+//       ObamaNumber ++;
+//       document.getElementById('# o obamaSteves').innerHTML = "Obama Stevens Clicked: " + ObamaNumber;
+// 			document.getElementById("obamaFaceButton").style.visibility = "hidden";
+// 			 obamaCount = TimerBase;
+// 			var obamaInterval = setInterval(function(){
+// 				obamaCount--;
+// 				document.getElementById("obamaTimer").innerHTML = obamaCount; 
+// 				if (obamaCount===0) {
+// 					document.getElementById("obamaFaceButton").style.visibility = "visible";
+// 					clearInterval(obamaInterval);
+// 					document.getElementById("obamaTimer").innerHTML = "";
+// 				}
+// 			} , 1000);
+			
+//     }
+//   }
+// 	}
+  
+   
+  
+  
+  
+  
+  
+</script>
+</body>
+</html>
