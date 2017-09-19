@@ -10,10 +10,18 @@
       padding-top: 80px;
       height: 100vh;
       margin: 0px;
+
+    }
+
+    #background{
+      height: 100%;
+      width: 100%;
       background-image: url("http://www.publicdomainpictures.net/pictures/40000/velka/blue-wood-texture-background.jpg");
     	background-size: cover;
     	background-repeat: no-repeat;
     	background-position: center;
+      position: fixed;
+      z-index: -1;
     }
     
     #nav_bar {
@@ -107,12 +115,19 @@
     }
     
     .projects_container {
-      padding: 
+      display: flex;
+      justify-content: space-around;
+      padding-top: 50px;
+    }
+
+    .project {
+      width: 300px;
+      height: 350px;
     }
     
     .project_img {
-      width: 100px;
-      height: 100px;
+      width: 100%;
+      height: 100%;
     	background-size: cover;
     	background-repeat: no-repeat;
     	background-position: center;
@@ -120,6 +135,7 @@
   </style>
 </head>
 <body>
+  <div id= "background"></div>
   <div id = "nav_bar">
     <button class = "nav_bar_title">
       Steven Underwood
@@ -138,7 +154,7 @@
   </div>
   <div id = "bod">
     <div class = "bod_welcome">
-      <h1 class = "bod_welcome_text">Welcome to my super cool new site!</h1>
+      <h1 class = "bod_welcome_text">Welcome to my new site!</h1>
       <h1 class = "bod_welcome_subtext">Click on the buttons to explore!</h1>
       <h3 class = "bod_welcome_subtext">. . . Or don't. They don't do anything yet.</h3>
     </div>
@@ -146,9 +162,27 @@
       <div class = "project">
         <div class = "project_img" style="background-image: url(imgs/STEVEGAME.png)"></div>
         <div>
-
+          
         </div>
       </div>
+      <div class = "project">
+          <div class = "project_img" style="background-image: url(imgs/STEVEGAME.png)"></div>
+          <div>
+            
+          </div>
+        </div>
+        <div class = "project">
+            <div class = "project_img" style="background-image: url(imgs/STEVEGAME.png)"></div>
+            <div>
+              
+            </div>
+          </div>
+          <div class = "project">
+              <div class = "project_img" style="background-image: url(imgs/STEVEGAME.png)"></div>
+              <div>
+                
+              </div>
+            </div>
     </div>
   </div>
 </body>
