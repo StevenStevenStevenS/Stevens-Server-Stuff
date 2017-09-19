@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div id="idea"></div>
+  <script>
+    var adjs = ["fancy", "devious", "sinister", "zombified", "one-eyed", "long-armed", "emo", "nerdy", "giant", "moustached", "winged", "monster-fighting", "gun-wielding", "grumpy"];
+    var subjs = ["tree", "octopus", "adventurer", "dinosaur", "monster", "book", "fairy", "reptile", "scientist", "alien", "feline", "calculator", "gingerbread man/woman", "robot", "banana"];
+    var extras = ["that never learned how to love", "whose only passion is art", "that is afraid of its own shadow", "who just wants to dance", "whose only goal is to solve the murder of his/her dog", "whose arch-nemesis is a sentient cucumber", "who travels through space and time with a crazy old man", "that was framed for the assasination of Abriham Linclon", "that only a mother could love", "who is currently a fugitive on the run", "that obsessively eats cookies", "who became the president"];
+    
+    var num;
+    var prevNum = -1;
+    
+    var idea = document.getElementById("idea");
+    
+    function generate() {
+      for (let i = 1; i <= 2; i++) {
+        num = Math.floor( Math.random() * adjs.length );
+        idea.innerHTML += adjs[num] + " ";
+        adjs.splice(num, 1);
+      }
+      num = Math.floor( Math.random() * subjs.length );
+      idea.innerHTML += subjs[num] + " ";
+      
+      num = Math.floor( Math.random() * extras.length );
+      idea.innerHTML += extras[num] + ".";
+    }
+    
+    
+    
+    generate()
+    
+    
+    
+  </script>
+</body>
+</html>

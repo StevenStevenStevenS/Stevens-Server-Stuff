@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link href="https://fonts.googleapis.com/css?family=Fugaz+One" rel="stylesheet">
+  <style>
+    
+    body {
+      padding-top: 80px;
+      height: 100vh;
+      margin: 0px;
+      background-image: url("http://www.publicdomainpictures.net/pictures/40000/velka/blue-wood-texture-background.jpg");
+    	background-size: cover;
+    	background-repeat: no-repeat;
+    	background-position: center;
+    }
+    
+    #nav_bar {
+      width: 100%;
+      
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin: 0;
+      padding: 0px;
+   	  top: 0px;
+      
+      position: fixed;
+      
+      background-color: black;
+      color:white;
+    }
+    .nav_bar_title {
+      border: none;
+      padding: 25px;
+      margin-left: 20px;
+      display: inline-block;
+      font-size: 30px;
+      text-align: center;
+      text-decoration: none;
+      background-color: black;
+      color: white;
+      outline: none;
+      font-family: 'Fugaz One', cursive;
+    }
+    #nav_bar_buttons{
+      display: flex;
+      margin-right: 20px;
+    }
+    
+    .nav_bar_button {
+      border: none;
+      padding: 20px 25px 20px 25px;
+      margin: 0px;
+      display: inline-block;
+      font-size: 25px;
+      text-align: center;
+      text-decoration: none;
+      background-color: black;
+      color: white;
+      outline: none;
+      cursor:pointer;
+      font-family: 'Fugaz One', cursive;
+      transition: .3s;
+    }
+    
+    .nav_bar_button:hover {background-color: #1F1F1F;}
+    .nav_bar_button:active {color: #CCCCCC;}
+    
+    .bod_welcome {
+      margin-top: 80px;
+      width: 100%;
+/*       overflow: hidden;
+      background-image: url("http://www.publicdomainpictures.net/pictures/40000/velka/blue-wood-texture-background.jpg");
+    	background-size: cover;
+    	background-repeat: no-repeat;
+    	background-position: center; */
+    }
+    
+/*     .bod_imgcont_img {
+      width: 100%;
+    	background-color: black;
+    	background-size: cover;
+    	background-repeat: no-repeat;
+    	background-position: center;
+       overflow: auto;
+     } */
+    
+    .bod_welcome_text {
+      margin: 5px;
+      padding-top: 80px;
+      font-size: 50px;
+      text-align: center;
+      text-decoration: none;
+      font-family: 'Fugaz One', cursive;
+      color: white;
+    }
+    
+    .bod_welcome_subtext {
+/*       padding: 0px; */
+      text-align: center;
+      text-decoration: none;
+      font-family: 'Fugaz One', cursive;
+      color: white;
+      margin: 5px;
+    }
+    
+    .projects_container {
+      padding: 
+    }
+    
+    .project_img {
+      width: 100px;
+      height: 100px;
+    	background-size: cover;
+    	background-repeat: no-repeat;
+    	background-position: center;
+    }
+  </style>
+</head>
+<body>
+  <div id = "nav_bar">
+    <button class = "nav_bar_title">
+      Steven Underwood
+    </button>
+    <div id = "nav_bar_buttons">
+      <button class = "nav_bar_button">
+        Home
+      </button>
+      <button class = "nav_bar_button">
+        Projects
+      </button>
+      <button class = "nav_bar_button">
+        About
+      </button>
+    </div>
+  </div>
+  <div id = "bod">
+    <div class = "bod_welcome">
+      <h1 class = "bod_welcome_text">Welcome to my new site!</h1>
+      <h1 class = "bod_welcome_subtext">Click on the buttons to explore!</h1>
+      <h3 class = "bod_welcome_subtext">. . . Or don't. They don't do anything yet.</h3>
+    </div>
+    <div class = "projects_container">
+      <div class = "project">
+        <div class = "project_img" style="background-image: url(imgs/STEVEGAME.png)"></div>
+        <div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    
+    
+    function makeSpiral(n) {
+      var spiral = [];
+      var length = n;
+      var dir = "RIGHT";
+      var row = 0;
+      var col = 0;
+      var movements = 1;
+
+      // init 2d array
+      for (let i=0; i<n; i+=1) {
+        spiral.push([])
+      }
+
+      for(var i=1; i<=n*n; i++) {
+        if(movements < length) {
+          spiral[row][col] = i;
+          nextSpot();
+        } else if (movements === length) {
+          spiral[row][col] = i;
+          changeDirection();
+          nextSpot();
+        }
+      }
+
+      function nextSpot() {
+        if (dir === "RIGHT") {
+          col++
+        } else if (dir === "LEFT") {
+          col--
+        } else if (dir === "UP") {
+          row--
+        } else if (dir === "DOWN") {
+          row++
+        }
+        movements++
+      }
+
+      function changeDirection() {
+        if (dir === "RIGHT") {
+          dir = "DOWN"
+          length--
+        } else if (dir === "LEFT") {
+          dir = "UP"
+          length--
+        } else if (dir === "UP") {
+          dir = "RIGHT"
+        } else if (dir === "DOWN") {
+          dir = "LEFT"
+        }
+        movements = 0;
+      }
+
+      return spiral
+    }
+
+    console.log(makeSpiral(3))
+  
+  </script>
+</body>
+</html>
