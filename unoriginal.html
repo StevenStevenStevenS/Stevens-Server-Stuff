@@ -21,7 +21,7 @@
     	background-position: center;
       position: fixed;
       z-index: -1;
-      filter: blur(2.5px) invert(100%);
+      filter: blur(2.5px);
       left: -10px;
     }
     
@@ -198,5 +198,40 @@
             </div>
     </div>
   </div>
+
+  <script>
+  
+  var code = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+  var keys = [];
+
+  window.addEventListener("keydown", secret);
+
+    function secret(key) {
+
+      keys.push(key.keyCode);
+
+      if(keys.length > code.length) {
+
+        keys.shift();
+
+      }
+
+      for(let i = 0; i < code.length; i++) {
+        if(code[i] !== keys[i]) {
+
+        return;
+
+        }
+      }
+
+      for(let i = 0; i < 100; i++) {
+        cornify_add();
+      }
+
+    }
+
+
+  </script>
+  <script src="http://www.cornify.com/js/cornify.js"></script>
 </body>
 </html>
