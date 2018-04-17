@@ -4,38 +4,28 @@ function Antag(X,Y) {
 	var width = scl;
 	var height = scl;
 
-	var speed = 3;
+	var speed = 2 + p.getProp().score/17000;
 
 	var dead = false;
+	var green, blue = 255;
 
 	var hyp, opp, adj;
 	var hypTL, hypTR, hypBL, hypBR, oppTL, oppTR, oppBL, oppBR, adjTL, adjTR, adjBL, adjBR;
 
 	function die() {
-		dead = true;
+			dead = true;
+			p.moreScore();
 	}
 
-	// function shadow( lightX, lightY) {
-	// 	hypTL = Math.pow((Math.pow(x - lightX, 2) + Math.pow(y - lightY, 2)), 0.5);
-	// 	adjTL = x - lightX;
-	// 	oppTL = y - lightY;
-	//
-	// 	hypTR = Math.pow((Math.pow(x + width - lightX, 2) + Math.pow(y - lightY, 2)), 0.5);
-	// 	adjTR = x + width - lightX;
-	// 	oppTR = y - lightY;
-	//
-	// 	hypBL = Math.pow((Math.pow(x - lightX, 2) + Math.pow(y + height - lightY, 2)), 0.5);
-	// 	adjBL = x - lightX;
-	// 	oppBL = y + height - lightY;
-	//
-	// 	hypBR = Math.pow((Math.pow(x + width - lightX, 2) + Math.pow(y + height - lightY, 2)), 0.5);
-	// 	adjBR = x + width - lightX;
-	// 	oppBR = y + height - lightY;
-	//
-	// 	fill(0, 4, 145);
-	// 	quad(x,y,698*(adjTL/hypTL),698*(oppTL/hypTL),698*(adjBR/hypBR),698*(oppBR/hypBR),x + width,y + height);
-	// 	quad(x + width,y,698*(adjTR/hypTR),698*(oppTR/hypTR),698*(adjBL/hypBL),698*(oppBL/hypBL),x,y + height);
-	// }
+	function despawnCheck() {
+		prop = p.getProp();
+		if (x + width < prop.x+prop.width/2-width/2-scl*9 ||
+			x > prop.x+prop.width/2+width/2+scl*9 ||
+			y + height < prop.y+prop.height/2-height/2-scl*9 ||
+			y > prop.y+prop.height/2+height/2+scl*9) {
+			dead = true;
+		}
+	}
 
 	function shadow( lightX, lightY) {
 		hypTL = Math.pow((Math.pow(x - lightX, 2) + Math.pow(y - lightY, 2)), 0.5);
@@ -55,6 +45,7 @@ function Antag(X,Y) {
 		oppBR = y + height - lightY;
 
 		fill(0, 4, 145);
+		rect(x, y, width, height);
 		quad(x,y,lightX + 700*(adjTL/hypTL),lightY + 700*(oppTL/hypTL),lightX + 700*(adjBR/hypBR),lightY + 700*(oppBR/hypBR),x + width,y + height);
 		quad(x + width,y,lightX + 700*(adjTR/hypTR),lightY + 700*(oppTR/hypTR),lightX + 700*(adjBL/hypBL),lightY + 700*(oppBL/hypBL),x,y + height);
 	}
@@ -83,14 +74,13 @@ function Antag(X,Y) {
 			blockTopSide < guyBottomSide &&
 			blockBottomSide > guyTopSide &&
 			guyLeftSide < blockRightSide) {
-				p.moreScore();
 				die();
 			}
 		}
 	}
 
 	function show() {
-    fill(255);
+    fill(255, 255, 255, 200);
 		noStroke();
     rect(x, y, width, height);
   }
@@ -106,6 +96,7 @@ function Antag(X,Y) {
 	}
 
 	return {
+		despawnCheck,
 		shadow,
 		move,
 		checkCollision,
