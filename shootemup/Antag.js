@@ -4,7 +4,10 @@ function Antag(X,Y) {
 	var width = scl;
 	var height = scl;
 
-	var speed = 2 + p.getProp().score/17000;
+	var vx = 0;
+  var vy = 0;
+
+	var a = 0.5 + p.getProp().score/1700;
 
 	var dead = false;
 	var green, blue = 255;
@@ -57,8 +60,8 @@ function Antag(X,Y) {
 		adj = prop.x + prop.width/2 - (x + width/2);
 
 		if (hyp !== 0) {
-			x += speed*(adj/hyp);
-			y += speed*(opp/hyp);
+			x += a*(adj/hyp);
+			y += a*(opp/hyp);
 		}
 	}
 
