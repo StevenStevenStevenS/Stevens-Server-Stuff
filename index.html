@@ -50,6 +50,8 @@
     }
 		#thingsOnPage {
 			margin-top: 12em;
+			margin-left: 14em;
+			margin-right: 14em;
 			font-family: oswald;
 		}
 		#page_projects {
@@ -93,12 +95,17 @@
     	background-position: center;
 		}
 		p {
-			margin-left: 14em;
-			margin-right: 14em;
+			/*margin-left: 14em;
+			margin-right: 14em;*/
 			text-indent: 1em;
 		}
 		#stevepic {
-			margin: 1em 14em 1em 1em;
+			max-width: 40%;
+			height: auto;
+
+			/*margin: 1em 14em 1em 1em;*/
+			margin 1em;
+			margin-top: 4em;
 		}
 	  .current-page {
 		  -webkit-animation-duration: .5s;
@@ -114,6 +121,17 @@
 				width: 100% !important;
 			}
 		}
+
+		table, th, td {
+			border: 1px solid black
+		}
+
+		td {
+			text-align: center;
+			margin: .5em
+		}
+
+
   </style>
 </head>
 <body>
@@ -124,7 +142,7 @@
     <nav class="head">
       <a id="nav_home">Home</a>
       <a id="nav_projects">Projects</a>
-      <a id="nav_about">About Steven</a>
+	  <a id="nav_about">About Steven</a>
       <a>Pointless Button</a>
 
     </nav>
@@ -137,7 +155,7 @@
 		
 		<div id="page_home" class="current-page">
 			<h2 style="text-align: center; text-transform: uppercase; margin-top: 9em;">Welcome to steven's website!</h2>
-			<p>"Welcome to my website! Here you can explore all of the wonder and excitement of each of my other beautiful websites and games! You can also read all about my magnificent and clearly superior life in the "About Steven" part of my website. If you want, you can also look up at the top part of my website for unhelpful life hacks and quotes."</p>
+			<p>"Welcome to my website! Here you can explore all of the wonder and excitement of each of my other beautiful websites and games! You can also read all about my magnificent and clearly superior life in the 'About Steven' part of my website. If you want, you can also look up at the top part of my website for unhelpful life hacks and quotes."</p>
 			<p> - Steven's Website was my old website from Junior High - High school, when I learned HTML, CSS, and JavaScript with my friend Aidan, and mentor/youth pastor, Jacob. It is goofy and arrogant (much like 14-year-old me). Under "Projects," you can see my video game projects, which have not withered with time. Under "About," I have added a small bit about my work experiences.</p>
 		</div>
 		
@@ -145,10 +163,10 @@
 			
 			<a href="/shootemup/" class="linky">
 				<div class="project">
-					<div class="project_img" style="background-image: url(../../public/resources/imgs/STEVEGAME.png)"></div>
+					<div class="project_img" style="background-image: url(imgs/Ghost_Game.png)"></div>
 					<div class="datext">
 						<h3>
-								Shootemup
+							Shootemup
 						</h3>
 					Probably the best game I ever made, aside from a few shorter GODOT demos. Basically, Pac-man . . . if Pac-man was a shooter game! <br><b>WARNING:</b> this game is <i>too</i> fun.
 					</div>
@@ -157,7 +175,7 @@
 
 			<a href="/experimental/" class="linky">
 			<div class="project">
-				<div class="project_img" style="background-image: url(../../public/resources/imgs/STEVEGAME.png)"></div>
+				<div class="project_img" style="background-image: url(imgs/STEVEGAME.png)"></div>
 				<div class="datext">
 					<h3>
 						Experimental Game
@@ -181,7 +199,7 @@
 
 			<a href="/textAdventure.html" class="linky">
 			<div class="project">
-				<div class="project_img" style="background-image: url(../../public/resources/imgs/textAdventure.png)"></div>
+				<div class="project_img" style="background-image: url(imgs/textAdventure.png)"></div>
 				<div class="datext">
 					<h3>
 						Text Adventure
@@ -193,7 +211,7 @@
 
 			<a href="/trololol.html" class="linky">
 			<div class="project">
-				<div class="project_img" style="background-image: url(../../public/resources/imgs/trololol.png)"></div>
+				<div class="project_img" style="background-image: url(imgs/trololol.png)"></div>
 				<div class="datext">
 					<h3>
 						A Button
@@ -205,7 +223,7 @@
 			
 			<a href="/clicker/" class="linky">
 			<div class="project">
-				<div class="project_img" style="background-image: url(../../public/resources/imgs/steveClicker.jpg)"></div>
+				<div class="project_img" style="background-image: url(imgs/steveClicker.jpg)"></div>
 				<div class="datext">
 					<h3>
 						Steven Clicker
@@ -217,12 +235,14 @@
 			
 		</div>
 		
-		
+
 		
 		<div id='page_about'>
 			<h2 style="text-align: center; text-transform: uppercase; margin-top: 9em;">About Steven</h2>
-			<image src="../../public/resources/imgs/steven.jpg" align="right" id="stevepic" />
+			<image src="imgs/Steven.jpg" align="right" id="stevepic" />
+			<br>
 			<p>"Steven is a cool guy that does stuff, and his life is more interesting then your's."</p>
+			<h3>Extensive Job History</h3>
 			<br>
 			<table>
 				<tr>
@@ -269,19 +289,34 @@
 			<br>
 			<h3>Education</h3>
 
-			 Fall 2020 Computer Science at Depaul University
-			 Fall 2019 - Spring 2020 C.S. at DePaul
-			 Winter 2018 - Spring 2019 C.S. at DePaul
-			 Fall 2018 GenEds DePaul
-			 2014 - 2018 High School at Mahomet Seymour
+			 Fall 2020 Computer Science at Depaul University<br>
+			 Fall 2019 - Spring 2020 C.S. at DePaul<br>
+			 Winter 2018 - Spring 2019 C.S. at DePaul<br>
+			 Fall 2018 GenEds DePaul<br>
+			 2014 - 2018 High School at Mahomet Seymour<br>
 
 			<br>
-			<p>Now at 21, I have held a variety of odd jobs from moving industrial equitment to working as a solo developer, and (one day) publishing my own products! The solo development project has taken a little longer to come out, given it's increase in scope and rigerous bug testing, and not much of it can be seen online, because it's mostly confidential; but, I am happy to share the programming experience that I've gained while working on the project! Perhaps it will come in handy.</p>
-			<p>I am a bit scruffy - I don't have all the presitge of a veteran programmer, but I hope you find that I am a dependable and good worker!</p>
+			Now at 21, I have held a variety of odd jobs from moving industrial equitment to working as a solo developer, and (one day) publishing my own products! &#x1F603;
+			<p>The solo development project has taken a little longer to come out, given it's increase in scope and rigerous bug testing, and not much of it can be seen online, because it's mostly confidential. but, I am happy to share the programming experience that I've gained while working on the project! Perhaps it will come in handy.</p>
+			<p>I started working on it because I had just missed the deadline to transfer into another college. I wanted to use my time well and I figured I'd be back in school in the Fall, so I started working on programming video games, and eventually, this bit of software, which has bloomed into a huge programming project!</p>
+			<br>
+			<img src="imgs/Hedron Coming Soon.gif" alt="Coming Soon!">
+			<br>
+			I am a bit scruffy - I don't have all the presitge of a veteran programmer, but I hope you find that I am a dependable and good worker!
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+
 		</div>
 	</div>
 
-  <script>
+	<script>
 	  	var GET = document.getElementById.bind(document);
 	  
 	  
@@ -433,8 +468,8 @@
 				});
 			});
 		}
-	  
-	  
-  </script>
+
+
+	</script>
 </body>
 </html>
