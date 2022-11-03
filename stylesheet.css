@@ -1,0 +1,31 @@
+img {
+    image-rendering: pixelated;
+}
+
+figcaption {
+    text-align: center;
+}
+
+/* PORTFOLIO */
+/* Wizards */
+#wizard-game img {
+    height: 100px;
+    padding: 0px;
+}
+
+#gunner img {
+    width: 500px;
+}
+
+.ti1 {
+    width: 90px;
+}
+
+.ti2 {
+    height: 100%;
+}
+
+#ai {
+    width: 200px;
+    float: right;
+}

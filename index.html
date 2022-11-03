@@ -2,474 +2,236 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Steven's Website</title>
-	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="animate.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.2/p5.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.4/addons/p5.dom.min.js"></script>
-	<script src="triangle/triangleRain.js"></script>
-  <style>
-    .head {
-      text-align: center;
-      text-transform: uppercase;
-			color: white;
-    }
-    .head > a {
-			cursor: pointer;
-      font-size: 20px;
-	    padding: 15px 80px;
-      text-decoration: none;
-      color: white;
-      transition: .5s;
-	  }
-    body {margin: 0px;}
-    
-    .header-nav {
-      padding: 15px 0px;
-      background-color: black;
-			position: absolute;
-   		bottom: 0;
-    	width: 100%;
-    }
-    .header-nav a:hover {background-color: #1F1F1F;}
-    .header-nav a:focus {background-color: #1F1F1F;}
-    .header-nav a:active {color: #CCCCCC;}
-    
-    #pageHeader {
-			overflow: hidden;
-			font-family: oswald;
-      position: fixed;
-      top: 0;
-			height: 12em;
-      width:100%;
-			background-color: #0022FF;
-      -webkit-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
-			-moz-box-shadow:    0px 0px 5px 0px rgba(50, 50, 50, 0.75);
-			box-shadow:         0px 0px 5px 0px rgba(50, 50, 50, 0.75);
-    }
-		#thingsOnPage {
-			margin-top: 12em;
-			margin-left: 14em;
-			margin-right: 14em;
-			font-family: oswald;
-		}
-		#page_projects {
-			text-align: center;
-			display: none;
-		}
-		#page_about {
-			display: none;
-		}
-		.project {
-			color: black;
-			overflow: auto;
-			margin: 1em;
-			width: 20em;
-			height: 26em;
-			display: inline-block;
-			transition: .5s;
-			-webkit-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
-			-moz-box-shadow:    0px 0px 5px 0px rgba(50, 50, 50, 0.75);
-			box-shadow:         0px 0px 5px 0px rgba(50, 50, 50, 0.75);
-		}
-    @media screen and (max-width: 975px) {
-    	.head>a {
-				padding: 15px 30px;
-			}
-		}
-		.linky {
-			text-decoration: none;
-		}
-		.project:hover {
-			-webkit-box-shadow: 0px 0px 30px 0px rgba(50, 50, 50, 0.75);
-			-moz-box-shadow:    0px 0px 30px 0px rgba(50, 50, 50, 0.75);
-			box-shadow:         0px 0px 30px 0px rgba(50, 50, 50, 0.75);
-		} 
-		.project_img {
-			width: 100%;
-    	height: 12em;
-    	background-color: black;
-    	background-size: cover;
-    	background-repeat: no-repeat;
-    	background-position: center;
-		}
-		p {
-			/*margin-left: 14em;
-			margin-right: 14em;*/
-			text-indent: 1em;
-		}
-		#stevepic {
-			max-width: 40%;
-			height: auto;
-
-			/*margin: 1em 14em 1em 1em;*/
-			margin 1em;
-			margin-top: 4em;
-		}
-	  .current-page {
-		  -webkit-animation-duration: .5s;
-	  }
-		canvas {
-			position: absolute;
-			top: 0;
-			left: 0;
-			z-index: -1;
-		}
-		@media screen and (min-width: 1300px) {
-    	canvas {
-				width: 100% !important;
-			}
-		}
-
-		table, th, td {
-			border: 1px solid black
-		}
-
-		td {
-			text-align: center;
-			margin: .5em
-		}
-
-
-  </style>
+  <title>StevenArtStuff</title>
+  <link rel="stylesheet" href="stylesheet.css">
 </head>
-<body>
-  <div id="pageHeader">
-  <h1 id="stevenhead" class="head">Steven's Website</h1>
-  <h4 id="texty" class="head">default text</h4>
-  <div class="header-nav">
-    <nav class="head">
-      <a id="nav_home">Home</a>
-      <a id="nav_projects">Projects</a>
-	  <a id="nav_about">About Steven</a>
-      <a>Pointless Button</a>
+<body onload="metaChangePage()">
+	<template>
+		<img src="" alt="" onclick="">
+	</template>
 
-    </nav>
-  </div>
-  </div>
-  
-	<div id="thingsOnPage">
-		
-		
-		
-		<div id="page_home" class="current-page">
-			<h2 style="text-align: center; text-transform: uppercase; margin-top: 9em;">Welcome to steven's website!</h2>
-			<p>"Welcome to my website! Here you can explore all of the wonder and excitement of each of my other beautiful websites and games! You can also read all about my magnificent and clearly superior life in the 'About Steven' part of my website. If you want, you can also look up at the top part of my website for unhelpful life hacks and quotes."</p>
-			<p> - Steven's Website was my old website from Junior High - High school, when I learned HTML, CSS, and JavaScript with my friend Aidan, and mentor/youth pastor, Jacob. It is goofy and arrogant (much like 14-year-old me). Under "Projects," you can see my video game projects, which have not withered with time. Under "About," I have added a small bit about my work experiences.</p>
-		</div>
-		
-		<div id="page_projects">
-			
-			<a href="/shootemup/" class="linky">
-				<div class="project">
-					<div class="project_img" style="background-image: url(imgs/Ghost_Game.png)"></div>
-					<div class="datext">
-						<h3>
-							Shootemup
-						</h3>
-					Probably the best game I ever made, aside from a few shorter GODOT demos. Basically, Pac-man . . . if Pac-man was a shooter game! <br><b>WARNING:</b> this game is <i>too</i> fun.
-					</div>
-				</div>
-				</a>
+	<!--Header-->
+	<header>
+		<h1>StevenArtStuff</h1>
+		<nav>
+			<button onclick="changePage('home')">SAS</button>
+			<button onclick="changePage('portfolio')">Portfolio</button>
+			<button onclick="changePage('commissions')">Commissions</button>
+			<button onclick="changePage('about')">About</button>
+			<button onclick="changePage('contact')">Contact</button>
+		</nav>
+	</header>
 
-			<a href="/experimental/" class="linky">
-			<div class="project">
-				<div class="project_img" style="background-image: url(imgs/STEVEGAME.png)"></div>
-				<div class="datext">
-					<h3>
-						Experimental Game
-					</h3>
-				"This is a game that I'm currently working on. This game, once finished, will be a Super Mario Bros type game in which you can play different levels and fight squares. Don't judge it too harshly because it isn't finished."
-				</div>
-			</div>
-			</a>
-			
-			<a href="/jumpDude/" class="linky">
-			<div class="project">
-				<div class="project_img" style="background-image: url(imgs/jumpDude.png)"></div>
-				<div class="datext">
-					<h3>
-						Jump Dude
-					</h3>
-					"My pride and joy. In this game, you use the arrow keys to endlessly jump on platforms of varying speed in order to escape lava.<br><b>WARNING:</b> This game gets you nowhere in life and should only be used to waste time."
-				</div>
-			</div>
-			</a>
+	<!--Page Content-->
+	<div></div>
 
-			<a href="/textAdventure.html" class="linky">
-			<div class="project">
-				<div class="project_img" style="background-image: url(imgs/textAdventure.png)"></div>
-				<div class="datext">
-					<h3>
-						Text Adventure
-					</h3>
-					"A magical and unfinished adventure of Steven's in which you use text to break out of a prision, (possibly) eat cake, and fail over and over again.<br><b>WARNING:</b> Aidan and other noobs are strictly prohibited from going on this adventure."
-				</div>
-			</div>
-			</a>
 
-			<a href="/trololol.html" class="linky">
-			<div class="project">
-				<div class="project_img" style="background-image: url(imgs/trololol.png)"></div>
-				<div class="datext">
-					<h3>
-						A Button
-					</h3>
-				"Click this button to discover an unplesant suprise! This is the first real website of Steven's, and yet, possibly still one of the best."
-				</div>
-			</div>
-			</a>
-			
-			<a href="/clicker/" class="linky">
-			<div class="project">
-				<div class="project_img" style="background-image: url(imgs/steveClicker.jpg)"></div>
-				<div class="datext">
-					<h3>
-						Steven Clicker
-					</h3>
-				"A cow clicker-esqe game made by Steven and Aidan in which you can click on my face! BUT WAIT, There's more! Not only can you click on my face, but you can also click on different versions of my face, including but not limited to: sad Steven, bearded Steven, and Obama Steven."
-				</div>
-			</div>
-			</a>
-			
-		</div>
+	<!--Pages-->
+	<article id="home">
+		<h1>StevenArtStuff</h1>
+	</article>
+
+	<article id="portfolio">
+		<h1>Portfolio</h1>
+		<button onclick="changePage('primary')">Primary</button>
+		<button onclick="changePage('wizard-game')">Wizard Game</button>
+		<button onclick="changePage('gunner')">Gunner Game</button>
+		<!--<button onclick="changePage('for-fun')">For fun!</button>
+		<button onclick="changePage('a-single-birds-tabernacle')">ASBT</button>-->
+
+		<!--Projects Grid-->
+		<div id="projects-grid"></div>
+	</article>
+
+	<article id="primary">
+		<h1>Primary</h1>
+
+		<img src="imgs/New/Primary/Buildings-sheet.png" alt="">
+		<img src="imgs/New/Primary/Ground-sheet.png" alt="">
+		<img src="imgs/New/Primary/Wilderness-sheet.png" alt="">
+
+		<img src="imgs/New/Primary/Manny-Sheet.gif" alt="">
+		<img src="imgs/New/Primary/NPCs.gif" alt="">
+
+		<img src="imgs/New/Primary/Primary-Animated.gif" alt="">
+		<img src="imgs/New/Primary/Primary-Screenshot-1.jpg" alt="">
+
+		<p>Primary is a game about living displaced in a small town. It's art relates to the main character's home's structures, and how he views them.<br>
+			This was of personal interest to me, because I'm from a small town and I've never been able to find a plesant narrative for it.
+			My art from this game, I hope, reflects, this experimentation with how I view my home.</p>
+	</article>
+
+	<article id="wizard-game">
+		<h2>Wizards</h2>
+			<img src="imgs/New/Wizard Game/Young_Wizard.jpg" alt="">
+			<img src="imgs/New/Wizard Game/Alchemist_Wizard.jpg" alt="">
+			<img src="imgs/New/Wizard Game/Wizard.jpg" alt="">
 		
+		
+		<h3>Wizard Animations</h3>
+		<img src="imgs/New/Wizard Game/Wizard_Idle.gif" alt="">
+		<img src="imgs/New/Wizard Game/Wizard_Idle_II.gif" alt="">
+
+		<h2>Enemies</h2>
+		<img src="imgs/New/Wizard Game/Mouse.jpg" alt="">
+		<img src="imgs/New/Wizard Game/Mystic.jpg" alt="">
+		<img src="imgs/New/Wizard Game/Dragon.jpg" alt="">
 
 		
-		<div id='page_about'>
-			<h2 style="text-align: center; text-transform: uppercase; margin-top: 9em;">About Steven</h2>
-			<image src="imgs/Steven.jpg" align="right" id="stevepic" />
-			<br>
-			<p>"Steven is a cool guy that does stuff, and his life is more interesting then your's."</p>
-			<h3>Extensive Job History</h3>
-			<br>
+
+		<h3>Mouse Animations</h3>
+		<img src="imgs/New/Wizard Game/Mouse_Idle.gif" alt="">
+		<img src="imgs/New/Wizard Game/Mouse_Fighting.gif" alt="">
+		<img src="imgs/New/Wizard Game/Mouse_Hit.gif" alt="">
+		<img src="imgs/New/Wizard Game/Mouse_Lightning.gif" alt="">
+
+		<h3>Mystic Animations</h3>
+		<img src="imgs/New/Wizard Game/Mystic_Idle.gif" alt="">
+		<img src="imgs/New/Wizard Game/Mystic_Action.gif" alt="">
+		<img src="imgs/New/Wizard Game/Mystic_Fighting.gif" alt="">
+		<img src="imgs/New/Wizard Game/Mystic_Hit.gif" alt="">
+		<img src="imgs/New/Wizard Game/Mystic_Lightning.gif" alt="">
+
+		<h3>Dragon Animations</h3>
+		<img src="imgs/New/Wizard Game/Dragon_Idle.gif" alt="">
+		<img src="imgs/New/Wizard Game/Dragon_Fighting.gif" alt="">
+		<img src="imgs/New/Wizard Game/Dragon_Hit.gif" alt="">
+		<img src="imgs/New/Wizard Game/Dragon_Lightning.gif" alt="">
+
+		<h2>Boss</h2>
+		<h3>Evil Wizard Animations</h3>
+		<img src="imgs/New/Wizard Game/Evil_Wizard_Small_Idle.gif" alt="">
+		<img src="imgs/New/Wizard Game/Evil_Wizard_Small_Action.gif" alt="">
+		<img src="imgs/New/Wizard Game/Evil_Wizard_Small_Fight.gif" alt="">
+		<img src="imgs/New/Wizard Game/Evil_Wizard_Small_Hit.gif" alt="">
+		<img src="imgs/New/Wizard Game/Evil_Wizard_Small_Lightning.gif" alt="">
+
+		<h2>Concept Art</h2>
+		<img src="imgs/New/Wizard Game/Concept-Characters_Design_1.png" alt="">
+		<img src="imgs/New/Wizard Game/Concept-Design_2.png" alt="">
+
+		<h2>Environment</h2>
+		<img src="imgs/New/Wizard Game/Village-Forest-sheet.png" alt="">
+		<img src="imgs/New/Wizard Game/Village-Foliage-sheet-1.gif" alt="">
+		<img src="imgs/New/Wizard Game/Village-Grass-sheet-1.gif" alt="">
+		<img src="imgs/New/Wizard Game/Village-GroundFlower-sheet-1.gif" alt="">
+		<img src="imgs/New/Wizard Game/Village-Tree-1.gif" alt="">
+
+		<p>
+			The art for "Wizard Game" was easy to come up with, as most of the characters and themes are renditions of well-known
+			tropes. This being a shorter stint, characters were anything but difficult to come up with, and most of the ones I came up with were one-offs.
+		</p>
+		
+
+
+
+		An unfinished RPG/story/strategy game. Was supposed to be an entry for the <i>Medieval and Queer</i> game jam, but fell apart near the end
+		due to a lack of defined structure, and was left with a bunch of pieces.
+	</article>
+
+	<article id="gunner">
+		<img src="imgs/New/Gunner/Concept_Furniture-Sheet.png" alt="">
+		<img src="imgs/New/Gunner/Concept-sheet.png" alt="">
+		<img src="imgs/New/Gunner/Foliage-Part-1.png" alt="">
+		<img src="imgs/New/Gunner/Foliage-Part-2.png" alt="">
+		<img src="imgs/New/Gunner/NPC.png" alt="">
+		<img src="imgs/New/Gunner/Player-Sheet.png" alt="">
+	</article>
+
+	<article id="for-fun">
+
+	</article>
+
+	<article id="a-single-birds-tabernacle">
+
+	</article>
+
+	<article id="commissions">
+		<h1>Commissions</h1>
+
+		<!--Commissions text-->
+		
+		<h2>What are my terms of service?</h2>
+
+		<p>
+			Paid in full ahead of time.<br>
+			The user must use ko.fi, Venmo, or PayPal to pay.<br>
+		</p>
+		
+		<p>
+			The user should ask for a change or cancel before hiring the commission.<br>
+			The commission total worth should be $50+ (nonrefundable).<br>
+		</p>
+		
+		<p>
+			The end result is a pixel art piece:<br>
+		
 			<table>
 				<tr>
-					<th>Job</th>
-					<th>Employer</th>
-					<th>Dates</th>
+					<td><img class="ti1" src="imgs/New/Arachnibot.png" alt=""></td>
+					<td><img class="ti2" src="imgs/New/Buildings-sheet.png" alt=""></td>
 				</tr>
 				<tr>
-					<td>"For fun" Video Game Programming Club</td>
-					<td>--</td>
-					<td>August 2015 - Sept 2018</td>
+					<td>Design: ~$30</td>
+					<td>Tileset spritesheet: ~$50</td>
 				</tr>
 				<tr>
-					<td>Corn Pollenating</td>
-					<td>Heinold Detasseling</td>
-					<td>July - August 2015</td>
+					<td><img class="ti2" src="imgs/New/Extra-sheet1.gif" alt=""></td>
+					<td><img class="ti1" src="imgs/New/Steve_Walk.gif" alt=""></td>
 				</tr>
 				<tr>
-					<td>Industrial Equitment Mover</td>
-					<td>Family Buisness</td>
-					<td>June - August 2018</td>
-				</tr>
-				<tr>
-					<td>Industrial Equitment Mover</td>
-					<td>Family Buisness</td>
-					<td>November - December 2019</td>
-				</tr>
-				<tr>
-					<td>Crew Boss for Corn Pollenating Unit</td>
-					<td>Heinold Detasseling</td>
-					<td>July - August 2019</td>
-				</tr>
-				<tr>
-					<td>Industrial Equitment Mover</td>
-					<td>Family Buisness</td>
-					<td>June - August 2020</td>
-				</tr>
-				<tr>
-					<td>Solo Dev on Unfinished Programming Project</td>
-					<td>Self</td>
-					<td>June 2021 - Present</td>
+					<td>Animated Tileset spritesheet: ~$70</td>
+					<td>Animation: ~$40</td>
 				</tr>
 			</table>
-			<br>
-			<h3>Education</h3>
+		</p>
+		
+		<p>
+			Please add stipulations!<br>
+			If you want something done in a certain style, palette, or resolution, let me know!<br>
+			As long as it’s pixel art. 🙂
+		</p>
+		
+		<h2>Contact:</h2>
+		<p>
+			<address>
+				Contact me at <a href="mailto:sunderwood555@gmail.com">sunderwood555@gmail.com</a><br>
+				Or DM me on insta: <a href="https://www.instagram.com/stevenartstuff/">@stevenartstuff</a><br>
+				For a more accurate estimate.
+			</address><br>
+			
 
-			 Fall 2020 Computer Science at Depaul University<br>
-			 Fall 2019 - Spring 2020 C.S. at DePaul<br>
-			 Winter 2018 - Spring 2019 C.S. at DePaul<br>
-			 Fall 2018 GenEds DePaul<br>
-			 2014 - 2018 High School at Mahomet Seymour<br>
+			Thank you!
+		</p>
+		
+	</article>
 
-			<br>
-			Now at 21, I have held a variety of odd jobs from moving industrial equitment to working as a solo developer, and (one day) publishing my own products! &#x1F603;
-			<p>The solo development project has taken a little longer to come out, given it's increase in scope and rigerous bug testing, and not much of it can be seen online, because it's mostly confidential. but, I am happy to share the programming experience that I've gained while working on the project! Perhaps it will come in handy.</p>
-			<p>I started working on it because I had just missed the deadline to transfer into another college. I wanted to use my time well and I figured I'd be back in school in the Fall, so I started working on programming video games, and eventually, this bit of software, which has bloomed into a huge programming project!</p>
-			<br>
-			<img src="imgs/Hedron Coming Soon.gif" alt="Coming Soon!">
-			<br>
-			I am a bit scruffy - I don't have all the presitge of a veteran programmer, but I hope you find that I am a dependable and good worker!
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
+	<article id="about">
+		<h1>About</h1>
 
-		</div>
-	</div>
+		<!--Profile Picture-->
+		<img id="ai" src="imgs/Steven.jpg" alt="">
 
-	<script>
-	  	var GET = document.getElementById.bind(document);
-	  
-	  
-	  
-	  
-		//variables used to make the subtitles
-	  	var texty = GET('texty');
-		var sayings = ['"default text" ~ default text','"Trogdor was a man... He was a dragon man." ~ StrongBad','Yay!', 'If life gives you lemons, Throw them away. They\'re probably past their experation date.', '"Ring-ding-ding-ding-dingeringeding" ~ the fox', '"It\'s a me, Mario!" ~ Mario', 'Don\'t trust atoms. they make up everything!', 'Life hack #458: If you and your friend are running away from a bear, you don\'t need to outrun the bear, you just need to outrun your friend', '42', 'It\'s a trap!','Violence isn\'t the answer unless it is.', 'If your friend is complaining that their feet hurt, break their arm and their feet will feel better.', 'Pro tip: Don\'t use our pro tips.', 'Get mad!', '"Steven\'s Website is by far one of the best places online." ~ Steven','This statement is false','Gottakatchemall!','insert unhelpful lifehack here','~=[,,_,,]:3','Be the very best like no one ever was'];
-		//var sayings = [""]
-		var xmasSayings = ['Merry Christmas!','Have a holly jolly Christmas!','Feliz Navidad!','"The best way to spread christmas cheer is singing loud for all to hear." ~ Buddy the elf','Bah humbug!','Watch out and don\'t cry, for santa is stalking you']
-		var textyNum = Math.floor(Math.random()*(sayings.length));
-		var xmasTextyNum = Math.floor(Math.random()*(xmasSayings.length));
-		
-		//variables used to show pages
- 		var nav_home = GET('nav_home');
-		var nav_projects = GET('nav_projects');
-		var nav_about = GET('nav_about');
-		
-		var page_home = GET('page_home');
-		var page_projects = GET('page_projects');
-		var page_about = GET('page_about');
+		<!--About text-->
+		<p>
+			Steven is a self-taught artist who lives in Central Illinois. He loves his pet cat Mayonnaise. His favorite hobbies are reading books, going on walks in the woods and watching TV with his family.
+		</p>
+		<p>
+			Steven’s art is inspired by the world around him and the discipline of study of the things he draws. Steven mostly relies on creativity to explain the rich unexplanableness of his interests. While he lives, he wants the mysticalness of the world, and of nature, to come through in his art, as something changing and never grasped. One day, Steven would like to get into writing.
+		</p>
+	</article>
 
-	  
-	  //the date
-		var d = new Date();
-		
-		
-		//The vars for Changing the head animation
-		var stevenhead = GET('stevenhead');
-		var allAnimations = [
-			"bounce",
-			"flash",
-			"pulse",
-			"rubberBand",
-			"shake",
-			"headShake",
-			"swing",
-			"tada",
-			"wobble",
-			"jello",
-			"bounceIn",
-			"bounceInDown",
-			"bounceInLeft",
-			"bounceInRight",
-			"bounceInUp",
-			"fadeIn",
-			"fadeInDown",
-			"fadeInLeft",
-			"fadeInRight",
-			"fadeInUp",
-			"flipInX",
-			"flipInY",
-			"lightSpeedIn",
-			"rotateIn",
-			"rotateInDownLeft",
-			"rotateInDownRight",
-			"rotateInUpLeft",
-			"rotateInUpRight",
-			"rollIn",
-			"zoomIn",
-			"zoomInDown",
-			"zoomInLeft",
-			"zoomInRight",
-			"zoomInUp",
-			"slideInDown",
-			"slideInLeft",
-			"slideInRight",
-			"slideInUp"
-		];
-		var headNum = Math.floor(Math.random()*(allAnimations.length));
-		var head;
-		
-		
-		//The code for Changing the head animation
-		stevenhead.className += " animated " + allAnimations[headNum];
-		//The code for subtitles
-// 		if(theDate.getMonth() === 6) {
-// 			if(theDate.getDate() === 18) {
-// 				texty.innerHTML = "HAPPY BIRTHDAY STEVEN!"
-// 			} else {
-// 				texty.innerHTML = sayings[textyNum];
-// 			}
-// 		} else if(theDate.getMonth() === 11) {
-// 			texty.innerHTML = sayings[textyNum];
-// 		}
-		
-// 		else {
-// 			texty.innerHTML = sayings[textyNum];
-// 		}
+	<article id="contact">
+		<h1>Contact</h1>
 
-		var date = d.getDate()
+		<!--Contact text-->
+		<address>
+			<a href="mailto:sunderwood555@gmail.com">sunderwood555@gmail.com</a><br>
+			<a href="https://www.instagram.com/stevenartstuff/">Insta: @stevenartstuff</a>
+		</address>
+	</article>
 
-		if (d.getMonth() == 11) {
-        	if (date == 24 || date == 25) {
-
-				texty.innerHTML = xmasSayings[xmasTextyNum];
-			} else {
-				texty.innerHTML = sayings[textyNum];
-			}
-
-    	} else {
-        texty.innerHTML = sayings[textyNum];
-		}
-		
-		
-		//The code for the pages
-		nav_home.onclick = function() {
-			switchPage('#page_home');	
-		}
-		
-		nav_projects.onclick = function() {		
-			switchPage('#page_projects');
-		}
-		
-		nav_about.onclick = function() {			
-			switchPage('#page_about');
-		}
-		
-// 		function switchPage(pageID) {
-// 			$('.current-page').addClass('animated fadeOut')
-// 				.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-// 				page_projects.style.display = 'none';
-// 				page_about.style.display = 'none';
-// 				page_home.style.display = 'none';
-				
-// 				$(this).removeClass('animated fadeOut current-page');
-				
-// 				$(pageID).show();
-// 				$(pageID).addClass('animated fadeIn current-page')
-// 				.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-// 					$(pageID).removeClass('animated fadeIn');
-// 				});
-// 			});
-// 		}
-		
-		function switchPage(pageID) {
-			$('.current-page').addClass('animated fadeOut')
-				.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-				page_projects.style.display = 'none';
-				page_about.style.display = 'none';
-				page_home.style.display = 'none';
-				
-				$(this).removeClass('animated fadeOut current-page');
-				
-				$(pageID).show();
-				$(pageID).addClass('animated fadeIn current-page')
-				.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-					$(pageID).removeClass('animated fadeIn');
-				});
-			});
-		}
-
-
-	</script>
+	<!--Script-->
+	<script src="script.js"></script>
 </body>
 </html>

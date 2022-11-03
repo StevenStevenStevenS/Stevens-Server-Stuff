@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Steven's Website</title>
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="animate.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.2/p5.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.4/addons/p5.dom.min.js"></script>
+	<script src="triangle/triangleRain.js"></script>
+  <style>
+    .head {
+      text-align: center;
+      text-transform: uppercase;
+			color: white;
+    }
+    .head > a {
+			cursor: pointer;
+      font-size: 20px;
+	    padding: 15px 80px;
+      text-decoration: none;
+      color: white;
+      transition: .5s;
+	  }
+    body {margin: 0px;}
+    
+    .header-nav {
+      padding: 15px 0px;
+      background-color: black;
+			position: absolute;
+   		bottom: 0;
+    	width: 100%;
+    }
+    .header-nav a:hover {background-color: #1F1F1F;}
+    .header-nav a:focus {background-color: #1F1F1F;}
+    .header-nav a:active {color: #CCCCCC;}
+    
+    #pageHeader {
+			overflow: hidden;
+			font-family: oswald;
+      position: fixed;
+      top: 0;
+			height: 12em;
+      width:100%;
+			background-color: #0022FF;
+      -webkit-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+			-moz-box-shadow:    0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+			box-shadow:         0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+    }
+		#thingsOnPage {
+			margin-top: 12em;
+			margin-left: 14em;
+			margin-right: 14em;
+			font-family: oswald;
+		}
+		#page_projects {
+			text-align: center;
+			display: none;
+		}
+		#page_about {
+			display: none;
+		}
+		.project {
+			color: black;
+			overflow: auto;
+			margin: 1em;
+			width: 20em;
+			height: 26em;
+			display: inline-block;
+			transition: .5s;
+			-webkit-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+			-moz-box-shadow:    0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+			box-shadow:         0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+		}
+    @media screen and (max-width: 975px) {
+    	.head>a {
+				padding: 15px 30px;
+			}
+		}
+		.linky {
+			text-decoration: none;
+		}
+		.project:hover {
+			-webkit-box-shadow: 0px 0px 30px 0px rgba(50, 50, 50, 0.75);
+			-moz-box-shadow:    0px 0px 30px 0px rgba(50, 50, 50, 0.75);
+			box-shadow:         0px 0px 30px 0px rgba(50, 50, 50, 0.75);
+		} 
+		.project_img {
+			width: 100%;
+    	height: 12em;
+    	background-color: black;
+    	background-size: cover;
+    	background-repeat: no-repeat;
+    	background-position: center;
+		}
+		p {
+			/*margin-left: 14em;
+			margin-right: 14em;*/
+			text-indent: 1em;
+		}
+		#stevepic {
+			max-width: 40%;
+			height: auto;
+
+			/*margin: 1em 14em 1em 1em;*/
+			margin 1em;
+			margin-top: 4em;
+		}
+	  .current-page {
+		  -webkit-animation-duration: .5s;
+	  }
+		canvas {
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: -1;
+		}
+		@media screen and (min-width: 1300px) {
+    	canvas {
+				width: 100% !important;
+			}
+		}
+
+		table, th, td {
+			border: 1px solid black
+		}
+
+		td {
+			text-align: center;
+			margin: .5em
+		}
+
+
+  </style>
+</head>
+<body>
+  <div id="pageHeader">
+  <h1 id="stevenhead" class="head">Steven's Website</h1>
+  <h4 id="texty" class="head">default text</h4>
+  <div class="header-nav">
+    <nav class="head">
+      <a id="nav_home">Home</a>
+      <a id="nav_projects">Projects</a>
+	  <a id="nav_about">About Steven</a>
+	  <a id="nav_art">Art</a>
+      <a>Pointless Button</a>
+
+    </nav>
+  </div>
+  </div>
+  
+	<div id="thingsOnPage">
+		
+		
+		
+		<div id="page_home" class="current-page">
+			<h2 style="text-align: center; text-transform: uppercase; margin-top: 9em;">Welcome to steven's website!</h2>
+			<p>"Welcome to my website! Here you can explore all of the wonder and excitement of each of my other beautiful websites and games! You can also read all about my magnificent and clearly superior life in the 'About Steven' part of my website. If you want, you can also look up at the top part of my website for unhelpful life hacks and quotes."</p>
+			<p> - Steven's Website was my old website from Junior High - High school, when I learned HTML, CSS, and JavaScript with my friend Aidan, and mentor/youth pastor, Jacob. It is goofy and arrogant (much like 14-year-old me). Under "Projects," you can see my video game projects, which have not withered with time. Under "About," I have added a small bit about my work experiences.</p>
+		</div>
+		
+		<div id="page_projects">
+			
+			<a href="/shootemup/" class="linky">
+				<div class="project">
+					<div class="project_img" style="background-image: url(imgs/Ghost_Game.png)"></div>
+					<div class="datext">
+						<h3>
+							Shootemup
+						</h3>
+					Probably the best game I ever made, aside from a few shorter GODOT demos. Basically, Pac-man . . . if Pac-man was a shooter game! <br><b>WARNING:</b> this game is <i>too</i> fun.
+					</div>
+				</div>
+				</a>
+
+			<a href="/experimental/" class="linky">
+			<div class="project">
+				<div class="project_img" style="background-image: url(imgs/STEVEGAME.png)"></div>
+				<div class="datext">
+					<h3>
+						Experimental Game
+					</h3>
+				"This is a game that I'm currently working on. This game, once finished, will be a Super Mario Bros type game in which you can play different levels and fight squares. Don't judge it too harshly because it isn't finished."
+				</div>
+			</div>
+			</a>
+			
+			<a href="/jumpDude/" class="linky">
+			<div class="project">
+				<div class="project_img" style="background-image: url(imgs/jumpDude.png)"></div>
+				<div class="datext">
+					<h3>
+						Jump Dude
+					</h3>
+					"My pride and joy. In this game, you use the arrow keys to endlessly jump on platforms of varying speed in order to escape lava.<br><b>WARNING:</b> This game gets you nowhere in life and should only be used to waste time."
+				</div>
+			</div>
+			</a>
+
+			<a href="/textAdventure.html" class="linky">
+			<div class="project">
+				<div class="project_img" style="background-image: url(imgs/textAdventure.png)"></div>
+				<div class="datext">
+					<h3>
+						Text Adventure
+					</h3>
+					"A magical and unfinished adventure of Steven's in which you use text to break out of a prision, (possibly) eat cake, and fail over and over again.<br><b>WARNING:</b> Aidan and other noobs are strictly prohibited from going on this adventure."
+				</div>
+			</div>
+			</a>
+
+			<a href="/trololol.html" class="linky">
+			<div class="project">
+				<div class="project_img" style="background-image: url(imgs/trololol.png)"></div>
+				<div class="datext">
+					<h3>
+						A Button
+					</h3>
+				"Click this button to discover an unplesant suprise! This is the first real website of Steven's, and yet, possibly still one of the best."
+				</div>
+			</div>
+			</a>
+			
+			<a href="/clicker/" class="linky">
+			<div class="project">
+				<div class="project_img" style="background-image: url(imgs/steveClicker.jpg)"></div>
+				<div class="datext">
+					<h3>
+						Steven Clicker
+					</h3>
+				"A cow clicker-esqe game made by Steven and Aidan in which you can click on my face! BUT WAIT, There's more! Not only can you click on my face, but you can also click on different versions of my face, including but not limited to: sad Steven, bearded Steven, and Obama Steven."
+				</div>
+			</div>
+			</a>
+			
+		</div>
+		
+
+		
+		<div id='page_about'>
+			<h2 style="text-align: center; text-transform: uppercase; margin-top: 9em;">About Steven</h2>
+			<image src="imgs/Steven.jpg" align="right" id="stevepic" />
+			<br>
+			<p>"Steven is a cool guy that does stuff, and his life is more interesting then your's."</p>
+			<h3>Extensive Job History</h3>
+			<br>
+			<table>
+				<tr>
+					<th>Job</th>
+					<th>Employer</th>
+					<th>Dates</th>
+				</tr>
+				<tr>
+					<td>"For fun" Video Game Programming Club</td>
+					<td>--</td>
+					<td>August 2015 - Sept 2018</td>
+				</tr>
+				<tr>
+					<td>Corn Pollenating</td>
+					<td>Heinold Detasseling</td>
+					<td>July - August 2015</td>
+				</tr>
+				<tr>
+					<td>Industrial Equitment Mover</td>
+					<td>Family Buisness</td>
+					<td>June - August 2018</td>
+				</tr>
+				<tr>
+					<td>Industrial Equitment Mover</td>
+					<td>Family Buisness</td>
+					<td>November - December 2019</td>
+				</tr>
+				<tr>
+					<td>Crew Boss for Corn Pollenating Unit</td>
+					<td>Heinold Detasseling</td>
+					<td>July - August 2019</td>
+				</tr>
+				<tr>
+					<td>Industrial Equitment Mover</td>
+					<td>Family Buisness</td>
+					<td>June - August 2020</td>
+				</tr>
+				<tr>
+					<td>Solo Dev on Unfinished Programming Project</td>
+					<td>Self</td>
+					<td>June 2021 - Present</td>
+				</tr>
+			</table>
+			<br>
+			<h3>Education</h3>
+
+			 Fall 2020 Computer Science at Depaul University<br>
+			 Fall 2019 - Spring 2020 C.S. at DePaul<br>
+			 Winter 2018 - Spring 2019 C.S. at DePaul<br>
+			 Fall 2018 GenEds DePaul<br>
+			 2014 - 2018 High School at Mahomet Seymour<br>
+
+			<br>
+			Now at 21, I have held a variety of odd jobs from moving industrial equitment to working as a solo developer, and (one day) publishing my own products! &#x1F603;
+			<p>The solo development project has taken a little longer to come out, given it's increase in scope and rigerous bug testing, and not much of it can be seen online, because it's mostly confidential. but, I am happy to share the programming experience that I've gained while working on the project! Perhaps it will come in handy.</p>
+			<p>I started working on it because I had just missed the deadline to transfer into another college. I wanted to use my time well and I figured I'd be back in school in the Fall, so I started working on programming video games, and eventually, this bit of software, which has bloomed into a huge programming project!</p>
+			<br>
+			<img src="imgs/Hedron Coming Soon.gif" alt="Coming Soon!">
+			<br>
+			I am a bit scruffy - I don't have all the presitge of a veteran programmer, but I hope you find that I am dependable and a good worker!
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+
+		</div>
+	</div>
+
+	<div id="page_art">
+		<div id="art_thingsOnPage"></div>
+		<div id="art_home">
+
+		</div>
+		<div id="art_search" class="orig">
+
+			
+
+		</div>
+
+	</div>
+
+
+	<script>
+	  	var GET = document.getElementById.bind(document);
+	  
+	  
+	  
+	  
+		//variables used to make the subtitles
+	  	var texty = GET('texty');
+		var sayings = ['"default text" ~ default text','"Trogdor was a man... He was a dragon man." ~ StrongBad','Yay!', 'If life gives you lemons, Throw them away. They\'re probably past their experation date.', '"Ring-ding-ding-ding-dingeringeding" ~ the fox', '"It\'s a me, Mario!" ~ Mario', 'Don\'t trust atoms. they make up everything!', 'Life hack #458: If you and your friend are running away from a bear, you don\'t need to outrun the bear, you just need to outrun your friend', '42', 'It\'s a trap!','Violence isn\'t the answer unless it is.', 'If your friend is complaining that their feet hurt, break their arm and their feet will feel better.', 'Pro tip: Don\'t use our pro tips.', 'Get mad!', '"Steven\'s Website is by far one of the best places online." ~ Steven','This statement is false','Gottakatchemall!','insert unhelpful lifehack here','~=[,,_,,]:3','Be the very best like no one ever was'];
+		//var sayings = [""]
+		var xmasSayings = ['Merry Christmas!','Have a holly jolly Christmas!','Feliz Navidad!','"The best way to spread christmas cheer is singing loud for all to hear." ~ Buddy the elf','Bah humbug!','Watch out and don\'t cry, for santa is stalking you']
+		var textyNum = Math.floor(Math.random()*(sayings.length));
+		var xmasTextyNum = Math.floor(Math.random()*(xmasSayings.length));
+		
+		//variables used to show pages
+ 		var nav_home = GET('nav_home');
+		var nav_projects = GET('nav_projects');
+		var nav_about = GET('nav_about');
+		
+		var page_home = GET('page_home');
+		var page_projects = GET('page_projects');
+		var page_about = GET('page_about');
+
+	  
+	  //the date
+		var d = new Date();
+		
+		
+		//The vars for Changing the head animation
+		var stevenhead = GET('stevenhead');
+		var allAnimations = [
+			"bounce",
+			"flash",
+			"pulse",
+			"rubberBand",
+			"shake",
+			"headShake",
+			"swing",
+			"tada",
+			"wobble",
+			"jello",
+			"bounceIn",
+			"bounceInDown",
+			"bounceInLeft",
+			"bounceInRight",
+			"bounceInUp",
+			"fadeIn",
+			"fadeInDown",
+			"fadeInLeft",
+			"fadeInRight",
+			"fadeInUp",
+			"flipInX",
+			"flipInY",
+			"lightSpeedIn",
+			"rotateIn",
+			"rotateInDownLeft",
+			"rotateInDownRight",
+			"rotateInUpLeft",
+			"rotateInUpRight",
+			"rollIn",
+			"zoomIn",
+			"zoomInDown",
+			"zoomInLeft",
+			"zoomInRight",
+			"zoomInUp",
+			"slideInDown",
+			"slideInLeft",
+			"slideInRight",
+			"slideInUp"
+		];
+		var headNum = Math.floor(Math.random()*(allAnimations.length));
+		var head;
+		
+		
+		//The code for Changing the head animation
+		stevenhead.className += " animated " + allAnimations[headNum];
+		//The code for subtitles
+// 		if(theDate.getMonth() === 6) {
+// 			if(theDate.getDate() === 18) {
+// 				texty.innerHTML = "HAPPY BIRTHDAY STEVEN!"
+// 			} else {
+// 				texty.innerHTML = sayings[textyNum];
+// 			}
+// 		} else if(theDate.getMonth() === 11) {
+// 			texty.innerHTML = sayings[textyNum];
+// 		}
+		
+// 		else {
+// 			texty.innerHTML = sayings[textyNum];
+// 		}
+
+		var date = d.getDate()
+
+		if (d.getMonth() == 11) {
+        	if (date == 24 || date == 25) {
+
+				texty.innerHTML = xmasSayings[xmasTextyNum];
+			} else {
+				texty.innerHTML = sayings[textyNum];
+			}
+
+    	} else {
+        texty.innerHTML = sayings[textyNum];
+		}
+		
+		
+		//The code for the pages
+		nav_home.onclick = function() {
+			switchPage('#page_home');	
+		}
+		
+		nav_projects.onclick = function() {		
+			switchPage('#page_projects');
+		}
+		
+		nav_about.onclick = function() {			
+			switchPage('#page_about');
+		}
+
+		nav_art.onclick = function() {
+			switchPage('#page_art')
+		}
+		
+// 		function switchPage(pageID) {
+// 			$('.current-page').addClass('animated fadeOut')
+// 				.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+// 				page_projects.style.display = 'none';
+// 				page_about.style.display = 'none';
+// 				page_home.style.display = 'none';
+				
+// 				$(this).removeClass('animated fadeOut current-page');
+				
+// 				$(pageID).show();
+// 				$(pageID).addClass('animated fadeIn current-page')
+// 				.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+// 					$(pageID).removeClass('animated fadeIn');
+// 				});
+// 			});
+// 		}
+		
+		function switchPage(pageID) {
+			$('.current-page').addClass('animated fadeOut')
+				.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+				page_projects.style.display = 'none';
+				page_about.style.display = 'none';
+				page_home.style.display = 'none';
+				
+				$(this).removeClass('animated fadeOut current-page');
+				
+				$(pageID).show();
+				$(pageID).addClass('animated fadeIn current-page')
+				.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+					$(pageID).removeClass('animated fadeIn');
+				});
+			});
+		}
+
+		// Art
+
+		var search_tag = "";
+		var art;
+		var searched_art;
+
+		var art_piece_ys:= {};
+		var art_piece_xs
+
+		// Store all Art data
+/*start*/		class Art_Piece extends square {
+
+			// vars
+			picture= "";
+			description= "";
+			date= "";
+			tags= "";
+
+			x
+			y
+			right
+			bottom
+
+			
+
+			dead_zone	// This is invisible
+			// functions
+
+			constructor(image,description,alt,tags,position) {
+				super()
+
+				dead_zone= square.new(point(p1.x-margin, p1.y-margin), width+(margin*2))	// The coords for the dead zone
+				scale = w2h
+			}
+
+			move(mx, my) {
+				x = mx
+				y = my
+			}
+
+			move_rel(mx, my) {
+				x += mx
+				y += my
+			}
+
+			resize(prc, ref_point) {
+				// Move while keeping this single point in the same position
+				for (let i=0; i< lines.length(); i++) {
+					lines[i].move(ref_point,/*Find the pos of the point in the object --*/(p.x-ref_point.x)/width*distance*scale)
+				}
+				
+				height = p3.y-p1.y
+				width  = p2.x-p1.x
+			}
+
+			resize_org(prc, ref_point) {
+				move(ref_point)
+			}
+
+			move_out(sq) {	// The sole purpose of this function is to move outside of the given point
+							// whichever way is easiest
+
+				// See which side the point is closest to
+
+				if (check_collision(sq)) {
+					// Find distance to push out
+
+					for (let i=0; i<lines.length(); i++) {
+						// Find the line that is inside this object
+						sq.dist_collided(p4)
+
+						// Find the distance to push out
+						let d = perp_distance_for_par_lines()
+					}
+					if (/*vert*/) {
+						resize(p1, /*Whatever the distance is*/height/d)
+					} else {
+						resize(p1, /*Whatever the distance is*/width/d)
+					}
+					
+
+
+
+				}
+			}
+
+/*end*/		}
+
+			//constructor(p1, p2 ,p3, p4) {
+			//
+			//}
+
+/*start*/			class square {
+
+				p1
+				p2
+				p3
+				p4
+
+				l1; l2; l3; l4
+
+				center,cen
+
+				height
+				width
+
+				w2h
+
+				len
+				constructor(p1, len) {
+
+				}
+
+				check_collision(obj) {
+					let j=0;
+
+					for (let i=0; i<obj.points.length(); i++) {	// For line in lines
+						for (let j=0; j<lines.length(); j++) {
+							if (lines[j].ineq() != true) {
+								return false;
+							}
+						}
+
+						return true;
+					}
+				}
+
+				dist_collided(point) {	// How far in is the point?
+					return point.new(point.x-p1.x, point.y-p1.y)
+				}
+/*end*/			}
+
+			class line_segment {
+
+				p1;
+				p2;
+
+				x;
+				y;
+
+				cenx;
+				ceny;
+
+				ineq=0;	//
+				inc=1
+
+				constructor(p1, p2, ineq=0, inc=1) {
+					this.p1 = p1;
+					this.p2 = p2;
+
+					this.ineq = ineq;
+					this.inc=inc
+				}
+
+				//length() {
+				//
+				//}
+
+				intersect(l2) {
+					let ix = (slope*p1.x - y1 - l2.slope*l2.p1.x-l2.p1.y)/
+						(slope-l2.slope)
+
+					let iy = f(ix)
+					return point.new(ix, iy)
+				}
+
+				f(x) {
+					if (p1.x < x < p2.x) {
+						y = slope*(x - p1.x) + p1.y;
+						return y;
+					}
+					
+					return null;
+				}
+
+				f1(y) {
+					if (p1.y < y < p2.y) {
+						x = (y - p1.y)/slope + p1.x;
+						return x;
+					}
+
+					return null;
+				}
+
+				inverse(x, y) {
+					let y1 = (x)/-slope + y
+					return y1	//return an actual line TODO: <---
+				}
+
+				ineq(p3) {	// For a point or line..?
+					let i
+
+					if ( p3.y < f(p3.x) ) {	// If point is lower than line
+						i = -1
+					} else if ( p3.y == f(p3.x) ) {	// If point is on the line
+						i = 0
+					} else {	// Else if point is higher than the line
+						i = 1
+					}
+
+					if (i == ineq) {
+						return true
+					}
+
+					return false
+				}
+
+				ineq_set(set) {	// For a whole set of points (So could be an intergral, i.e. a line)
+					// return "Not Set Up"
+				}
+
+				perp_distance(obj) {
+					// Assume it's a point for now
+
+					// Make inverse line
+					let inn = inverse(obj.x, obj.y);
+					// Find intersection
+					let ip = intersect(inn);
+
+					// return the distance
+					length(ip, obj);
+				}
+
+				perp_distance_for_par_lines(obj) {
+					let inn = inverse(obj.p1.x, obj.p1.y);
+					// Find intersection
+					let ip = intersect(inn);
+
+					// return the distance
+					length(ip, obj.p1);
+				}
+
+				// METHODS THAT NEED A PLACE
+
+				move(x, y) {
+					// Split the characters in p_name and take the last n to str()	// TODO: <--
+
+					if (mode == "top") {
+						points[0].move(x,y)
+
+						for (let i=1; i<points.length(); i++) {
+							points[i].move(points[i].x-p1.x, points[i].y-p1.y)
+						}
+					} else if (mode == "center") {
+						for (let i=0; i<points.length(); i++) {
+							points[i].move(points[i].x-cenx, points[i].y-ceny)
+							//points[i].move(points[i].x + x, points[i].y + y)
+						}
+					}
+				}
+
+
+				
+			}
+
+			class line {
+
+				p1
+				slope
+
+				constructor(p1, p2) {
+
+				}
+			}
+
+			class point {
+				x;
+				y;
+
+				constructor(x, y) {
+					this.x = x;
+					this.y = y;
+				}
+
+				move(x, y) {
+					this.x = x
+					this.y = y
+				}
+			}
+
+		
+		// Organize the art.pictures on the page
+
+/*start*/		function organize_art(tag) {
+			// Put some of the pieces some places (At good distances from the sides and from each other)
+			var random_img
+			var img
+			var rand_num
+
+
+			// Get the images' height and width
+			var h = img.height
+			var w = img.width
+
+			// Make sure not up against the wall of the page or too close/not close enough
+			if rand_num < 50 || rand_num + img.width > end-50 {
+				return
+			}
+
+			for (let i=0; i > places.length; i++) {
+				// if rand_num is inside one of the other pictures spaces:
+
+
+
+			}
+
+
+			// Fill the rest of the space with other pictures
+/*end*/		}
+/*start*/		function org_vert(image, min, max) {
+			r_inc()
+
+
+			// Set image at this height
+			
+			// In HTML:
+			// "At r_num,"
+
+			// Actually, do I need to add a specific image to this height???
+
+			imgAtHeight[r_num] = []
+/*end*/		}
+/*start*/		function org_horiz(min, max) {
+			r_inc(min, max)
+
+/*end*/		}
+		// EXPECT TYPOS
+		// 2021	CODE!!!:
+/*start*/		function check_in_row(h) {
+			for x in imgAtHeight[h] {
+				for x in imgAtHeight[h] {
+					if (h.x < i.x < h.right || h.x < i.right < h.right) {	// If it collides with another image
+						if (i.midx-h.x > i.midx-h.right) {	// If closer to x side than right side:
+							i.moveRight(h.x - margin)
+						} else {
+							i.move(h.right + margin)
+						}
+					}
+				}
+			}
+/*end*/		}
+/*start*/		function check_vert() {	// check collide
+			for x in img {
+				for y in img {
+					if ((h.x < i.x < h.right || h.x < i.right < h.right) && (h.y < i.x < h.bottom || h.y < i.right < h.bottom)) {	// If it collides with another image
+						if (i.midx-h.x > i.midx-h.right) {	// If closer to x side than right side:
+							i.moveRight(h.y - margin)
+						} else {
+							i.move(h.bottom + margin)
+
+						}
+					}
+				}
+/*end*/			}
+
+			// All of the first images have been placed and changed correctly
+			// Next, find and fill in the open spaces
+
+			function findNFill() {
+				return
+			}
+
+/*start*/			// find the empty spaces
+			function find() {
+				sortedImgs
+				// find the empty spaces
+
+				// Find the left barrier
+				if (barrierx - sortedImgs[0].x > margin) {
+					fill(barrierx, y , right, bottom)
+				}
+				for (let i=0; i>A.length(); i++) {
+					if (sortedImgs[i].x - sortedImgs[i+1].x > margin) {
+						fill(x, y)
+					}
+				}
+
+			}
+
+			// Double filler
+			// (Can fill and then fill again OO times)
+			function fill() {
+				// Put the image in the space.
+				// Make sure it's not too close/far from the other margin; then
+				// see if there is any space for another image.
+
+
+				//Put the image in the space
+				
+				const newDiv = document.createElement("div");
+
+				// and give it some content
+				const newContent = document.createTextNode("Hi there and greetings!");
+
+				// add the text node to the newly created div
+				newDiv.appendChild(newContent);
+
+				// add the newly created element and its content into the DOM
+				const currentDiv = document.getElementById("div1");
+				document.body.insertBefore(newDiv, currentDiv);
+
+
+				// Whatever the space is
+				element.setAttribute('name','value');
+
+
+				.image{
+				  position: absolute;
+				  right:300px;
+				}
+
+			}
+
+			function fill(pos) {
+				// Create a new art piece instance
+				//let newArt = Art_Piece.new()
+												// These parameters need to be found (somewhere)
+
+				// NEVERMIND:
+				// I already have all of the art pieces.
+				
+				// 1. Put the random Art_Piece's data into a div
+											
+				// Create a new div
+				let newDiv = document.createElement("div");
+
+				// Div Business
+				//set postion of the div
+				newDiv.setAttribute("position", "absolute")	//MAKE SURE the margin is accounted for!!!
+				newDiv.setAttribute("right", str(pos.x))
+				newDiv.setAttribute("top", str(pos.y))
+
+				//Create an image to put inside the div
+				let newImg = document.createElement("img");
+
+				newImg.setAttribute("src", A_P.image)
+
+				newImg.width, newImg.height
+
+				//Get the text to put inside the div (to show up on hover)???
+				//let newContent = 
+				
+				// TODO: Set a random % multiplier, to grow/shrink the image a little, just for fun.
+
+				
+				for (let i=0; i<a.length(); i++) {	// for art piece in array of all art pieces
+						// Check if any are colliding
+						// if so, change the pieces' positions. To where they aren't colliding
+					
+						pos.move_out(a[i]);
+				}
+
+				// If there is extra space
+
+				if(/*space*/) {
+					fill(pos)
+				}
+
+				if ( (pos.right > deadZoneX && pos.right < deadZoneRight)
+					&& (pos.bottom > deadZoneY && pos.bottom < deadZoneBottom) ) {
+
+					//See how close it is:
+
+					pos x
+
+				}
+
+				if (pos.check_collision() == false && oth.check_collision() ==false) {
+
+				}
+			}
+
+			// Check if Any of the images colide with this image
+			// If they colide, move this image to the bottom of the other image
+
+
+			document.body.onload = addElement;
+
+function addElement () {
+  // create a new div element
+  const newDiv = document.createElement("div");
+
+  // and give it some content
+  const newContent = document.createTextNode("Hi there and greetings!");
+
+  // add the text node to the newly created div
+  newDiv.appendChild(newContent);
+
+  // add the newly created element and its content into the DOM
+  const currentDiv = document.getElementById("div1");
+  document.body.insertBefore(newDiv, currentDiv);
+}
+
+
+		}
+
+		function check_Collision(ap) {
+			
+			for (let i=0; i<.length(); i++) {
+
+				// This is in that one
+				if (line1) {
+
+				}
+					
+				
+				ap.x < h[i].right && ap.right < h[i].x /*between*/ ) //between
+
+				// That is in this one
+
+				return true
+			}
+
+			return false
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		// BASE FUNCTIONS
+		// functions for basic operations
+		
+
+		function r_inc() {
+			min = Math.ceil(min);
+			max = Math.floor(max);
+
+			r_num = (Math.random()*(max-min+1)) + min
+
+			return r_num
+		}
+
+		function shuffle(array) {
+			let i = a.length();
+			let currentIndex = array.length,  randomIndex;
+
+			while (currentIndex != 0) {
+				//
+				randomIndex = Math.floor(Math.random() * currentIndex);
+				currentIndex--;
+
+				[array[currentIndex], array[randomIndex]] = [
+				array[randomIndex], array[currentIndex]];
+			}
+
+			return array;
+		}
+
+		function shuffle(array) {
+			var m = array.length, t, i;
+
+			// While there remain elements to shuffle…
+			while (m) {
+
+			// Pick a remaining element…
+			i = Math.floor(Math.random() * m--);
+
+			// And swap it with the current element.
+			t = array[m];
+			array[m] = array[i];
+			array[i] = t;
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		function shuffle(array) {
+			var currentIndex = array.length()-1 //", hold, randomIndex; (This means what is below (next two lines))"
+			var hold;
+			var randomIndex;
+
+			while(currentIndex > 0) {	// While there are still things left to shuffle
+
+				randomIndex = /*random number 0-n*/ Math.floor(Math.random()*currentIndex)
+
+				// Condense remaining elements
+				// Put the random numbers to the end
+
+				hold = array[currentIndex];
+				array[currentIndex] = array[randomIndex];
+				array[randomIndex] = hold;
+
+				currentIndex --;
+			}
+
+
+		}
+
+		function sort_location(array, closest=true) {
+			if (closest){
+				let f1	// Focus #1
+				let f2	// Focus #2
+				let m	// Middle of the array
+
+				f1 = array[0]
+
+				m = array.length()/2	// FIX MATH: Represents the middle of the array
+
+				if (f1 > m) {
+					// f1 is put to the back of the array
+					// The back node is put to the front
+				} else {
+					// f1 stays in place and we go to the next number 
+				}
+				
+
+				//Do this for every node 0 - n/2
+
+			}
+		}
+
+					//Do this for every node 0 - n/2
+/*start*/		function quicksort() {
+			// Split the array at the partition
+			// Quicksort the split arrays
+			if (lo >= 0 && hi >= 0 && lo > hi) {
+
+				// The partition is the last element in the array
+				// We are pushing all of the other elements after it
+
+				let p = partition(A, lo, hi)
+
+				quicksort(A, lo, p-1)
+				quicksort(A, p, hi)
+			}
+		}
+
+		// A help for quicksort
+		function partition() {
+			let p = A[hi]
+
+			let i = lo - 1 // Why i minus 1?
+
+			for (let j = lo; j <= hi; j++) {
+				if (A[j] <= p) {
+
+					i += 1
+
+					let Ai = A[i]
+					A.splice(i,1,A[j])
+					A.splice(j,1,A[i])
+				}
+			}
+			return i
+/*end*/		}
+
+		function length(p1, p2) {
+			return Math.pow( Math.pow( p2.x - p1.x, 2) + Math.pow( p2.y - p1.y, 2), 0.5 )	// Return p.t. for length
+		}
+
+		function first_point(A) {
+			let f= A[0];
+
+			for (let i=0; i<A.length(); i++) {
+
+				if (A[i+1].x - A[i].x < 0) {
+					f = A[i+1]
+				} else if (A[i+1].x - A[i].x == 0) {
+					if (A[i+1].y - A[i].y > 0) {
+						f = A[i+1]
+					}
+				}
+				
+				
+			}
+
+			return f
+		}
+	</script>
+</body>
+</html>
